@@ -9,7 +9,6 @@
 #include <dlib/image_processing.h>
 #include <dlib/gui_widgets.h>
 
-using namespace std;
 using namespace dlib;
 
 template <long num_filters, typename SUBNET> using con5d = con<num_filters, 5, 5, 2, 2, SUBNET>;
@@ -32,14 +31,14 @@ EXTERN_API void dlib_dnn_mmod_face_detection_delete(net_type *obj)
 	delete obj;
 }
 
-EXTERN_API void dlib_dnn_mmod_face_detection_operator(net_type *obj, dlib::array2d<uchar> *image, std::vector<Rect> *dst)
+EXTERN_API void dlib_dnn_mmod_face_detection_operator(net_type *obj, matrix<rgb_pixel> *image, std::vector<Rect> *dst)
 {
 	try
 	{
-		//auto dets = (*obj)(*image);
-		//dst->resize(dets->size());
-		//int i = 0;
-		//for (auto&& d : dets) { (*dst)[i++] = Rect(d); }
+		auto dets = (*obj)(*image);
+		dst->resize(dets.size());
+		int i = 0;
+		for (auto&& d : dets) { (*dst)[i++] = Rect(d); }
 	}
 	catch (dlib::error &e)
 	{

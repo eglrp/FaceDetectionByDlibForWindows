@@ -52,4 +52,41 @@ EXTERN_API void dlib_pyramid_up_array2d_uchar(dlib::array2d<uchar> *obj)
     }
 }
 
+
+
+EXTERN_API dlib::matrix<dlib::rgb_pixel> *dlib_matrix_rgbpixel_new()
+{
+	return new dlib::matrix<dlib::rgb_pixel>;
+}
+
+EXTERN_API void dlib_matrix_rgbpixel_delete(dlib::matrix<dlib::rgb_pixel> *obj)
+{
+	delete obj;
+}
+
+EXTERN_API void dlib_matrix_rgbpixel_load_bmp(dlib::matrix<dlib::rgb_pixel> *obj, const char *buffer, size_t buffer_length)
+{
+	try
+	{
+		std::istringstream stream(std::string(buffer, buffer + buffer_length));
+		dlib::load_bmp(*obj, stream);
+	}
+	catch (dlib::error &e)
+	{
+		if (g_ErrorCallback) g_ErrorCallback(e.what());
+	}
+}
+
+EXTERN_API void dlib_matrix_rgbpixel_pyramid_up(dlib::matrix<dlib::rgb_pixel> *obj)
+{
+	try
+	{
+		dlib::pyramid_up(*obj);
+	}
+	catch (dlib::error &e)
+	{
+		if (g_ErrorCallback) g_ErrorCallback(e.what());
+	}
+}
+
 #endif
