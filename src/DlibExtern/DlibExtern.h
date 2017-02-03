@@ -44,7 +44,7 @@ extern "C"
         Rect(const dlib::rectangle &r)
             : x(r.left()), y(r.top()), width(r.width()), height(r.height())
         {}
-    };
+	};
 }
 
 #endif

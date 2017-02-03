@@ -21,13 +21,16 @@
     <ClInclude Include="DlibExtern.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="face_detector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="array2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="std_vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frontal_face_detector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dnn_mmod_face_detection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,13 +38,16 @@
     <ClCompile Include="DlibExtern.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="face_detector.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="array2d.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="std_vector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frontal_face_detector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dnn_mmod_face_detection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
