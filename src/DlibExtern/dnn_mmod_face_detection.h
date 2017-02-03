@@ -20,19 +20,19 @@ template <typename SUBNET> using rcon5 = relu<affine<con5<45, SUBNET>>>;
 
 using net_type = loss_mmod<con<1, 9, 9, 1, 1, rcon5<rcon5<rcon5<downsampler<input_rgb_image_pyramid<pyramid_down<6>>>>>>>>;
 
-EXTERN_API net_type* dlib_dnn_mmod_face_detector_construct()
+EXTERN_API net_type* dlib_dnn_mmod_face_detection_construct()
 {
 	net_type* ret = new net_type();
 	deserialize("C:/Data/Dlib/mmod_human_face_detector.dat/mmod_human_face_detector.dat") >> (*ret);
 	return ret;
 }
 
-EXTERN_API void dlib_dnn_mmod_face_detector_delete(net_type *obj)
+EXTERN_API void dlib_dnn_mmod_face_detection_delete(net_type *obj)
 {
 	delete obj;
 }
 
-EXTERN_API void dlib_dnn_mmod_face_detector_operator(net_type *obj, dlib::array2d<uchar> *image, std::vector<Rect> *dst)
+EXTERN_API void dlib_dnn_mmod_face_detection_operator(net_type *obj, dlib::array2d<uchar> *image, std::vector<Rect> *dst)
 {
 	try
 	{
