@@ -83,9 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DlibExtern.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DlibExtern.pdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -123,18 +123,21 @@ namespace DlibSharp.Tests
             {
                 image = NativeMethods.dlib_matrix_rgbpixel_new();
                 NativeMethods.dlib_load_bmp_matrix_rgbpixel(image, imageBytes, new IntPtr(imageBytes.Length));
-                NativeMethods.dlib_pyramid_up_matrix_rgbpixel(image);
+                //NativeMethods.dlib_pyramid_up_matrix_rgbpixel(image);
 
-                detector = NativeMethods.dlib_dnn_mmod_face_detection_construct();
                 dets = NativeMethods.vector_Rect_new1();
+                detector = NativeMethods.dlib_dnn_mmod_face_detection_construct();
                 NativeMethods.dlib_dnn_mmod_face_detection_operator(detector, image, dets);
-                unsafe
+                long count = NativeMethods.vector_Rect_getSize(dets).ToInt64();
+                if (count > 0)
                 {
-                    Rect* rectangles = (Rect*)NativeMethods.vector_Rect_getPointer(dets).ToPointer();
-                    long count = NativeMethods.vector_Rect_getSize(dets).ToInt64();
-                    for (int i = 0; i < count; i++)
+                    unsafe
                     {
-                        Console.WriteLine(rectangles[i]);
+                        Rect* rectangles = (Rect*)NativeMethods.vector_Rect_getPointer(dets).ToPointer();
+                        for (int i = 0; i < count; i++)
+                        {
+                            Console.WriteLine(rectangles[i]);
+                        }
                     }
                 }
             }
