@@ -12,7 +12,7 @@
         IntPtr image = IntPtr.Zero;
         IntPtr dets = IntPtr.Zero;
 
-        void ReleaseDetector() { if (image != IntPtr.Zero) { NativeMethods.dlib_array2d_uchar_delete(image); image = IntPtr.Zero; } }
+        void ReleaseDetector() { if (image != IntPtr.Zero) { NativeMethods.dlib_matrix_rgbpixel_delete(image); image = IntPtr.Zero; } }
         void ReleaseImage() { if (detector != IntPtr.Zero) { NativeMethods.dlib_dnn_mmod_face_detection_delete(detector); detector = IntPtr.Zero; } }
         void ReleaseDets() { if (dets != IntPtr.Zero) { NativeMethods.vector_Rect_delete(dets); dets = IntPtr.Zero; } }
 
@@ -37,9 +37,9 @@
                 {
                     imageBytes = inputImage.ToBytes(".bmp");
                 }
-                NativeMethods.dlib_load_bmp_array2d_uchar(image, imageBytes, new IntPtr(imageBytes.Length));
+                NativeMethods.dlib_load_bmp_matrix_rgbpixel(image, imageBytes, new IntPtr(imageBytes.Length));
 
-                //NativeMethods.dlib_pyramid_up_array2d_uchar(image);
+                NativeMethods.dlib_pyramid_up_matrix_rgbpixel(image);
 
                 dets = NativeMethods.vector_Rect_new1();
                 NativeMethods.dlib_dnn_mmod_face_detection_operator(detector, image, dets);

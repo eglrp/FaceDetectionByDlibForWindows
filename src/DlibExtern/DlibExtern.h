@@ -9,10 +9,12 @@
 // ソースファイルがこのファイルを含んでいる他のプロジェクトは、 
 // DLIBEXTERN_API 関数を DLL からインポートされたと見なすのに対し、この DLL は、このマクロで定義された
 // シンボルをエクスポートされたと見なします。
-#ifdef DLIBEXTERN_EXPORTS
+#if defined(DLIBEXTERN_EXPORTS)
 #define EXTERN_API extern "C" __declspec(dllexport)
-#else
+#elif defined(DLIBEXTERN_IMPORTS)
 #define EXTERN_API extern "C" __declspec(dllimport)
+#else
+#define EXTERN_API extern "C"
 #endif
 
 using uchar = unsigned char;
