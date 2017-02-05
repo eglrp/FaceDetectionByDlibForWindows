@@ -21,16 +21,6 @@
 
 
         [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
-        extern internal static IntPtr dlib_dnn_mmod_face_detection_construct();
-
-        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
-        extern internal static void dlib_dnn_mmod_face_detection_delete(IntPtr obj);
-
-        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
-        extern internal static void dlib_dnn_mmod_face_detection_operator(IntPtr obj, IntPtr image, IntPtr dst);
-
-
-        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
         extern internal static IntPtr dlib_get_frontal_face_detector();
 
         [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
@@ -56,6 +46,32 @@
 
         [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
         extern internal static void dlib_pyramid_up_array2d_uchar(IntPtr obj);
+
+
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static IntPtr dlib_matrix_rgbpixel_new();
+
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static void dlib_matrix_rgbpixel_delete(IntPtr obj);
+
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static void dlib_load_image_matrix_rgbpixel(IntPtr obj, string file_name);
+
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static void dlib_load_bmp_matrix_rgbpixel(IntPtr obj, [MarshalAs(UnmanagedType.LPArray)] byte[] buffer, IntPtr buffer_length);
+
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static void dlib_pyramid_up_matrix_rgbpixel(IntPtr obj);
+
+
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static IntPtr dlib_dnn_mmod_face_detection_construct();
+
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static void dlib_dnn_mmod_face_detection_delete(IntPtr obj);
+
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static void dlib_dnn_mmod_face_detection_operator(IntPtr obj, IntPtr image, IntPtr dst);
 
 
         [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]

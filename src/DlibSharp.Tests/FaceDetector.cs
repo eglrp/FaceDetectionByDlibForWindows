@@ -82,12 +82,11 @@ namespace DlibSharp.Tests
             IntPtr dets = IntPtr.Zero;
             try
             {
-                detector = NativeMethods.dlib_get_frontal_face_detector();
                 image = NativeMethods.dlib_array2d_uchar_new();
-
                 NativeMethods.dlib_load_bmp_array2d_uchar(image, imageBytes, new IntPtr(imageBytes.Length));
                 NativeMethods.dlib_pyramid_up_array2d_uchar(image);
 
+                detector = NativeMethods.dlib_get_frontal_face_detector();
                 dets = NativeMethods.vector_Rect_new1();
                 NativeMethods.dlib_frontal_face_detector_operator(detector, image, 0, dets);
                 unsafe
@@ -122,12 +121,11 @@ namespace DlibSharp.Tests
             IntPtr dets = IntPtr.Zero;
             try
             {
+                image = NativeMethods.dlib_matrix_rgbpixel_new();
+                NativeMethods.dlib_load_bmp_matrix_rgbpixel(image, imageBytes, new IntPtr(imageBytes.Length));
+                NativeMethods.dlib_pyramid_up_matrix_rgbpixel(image);
+
                 detector = NativeMethods.dlib_dnn_mmod_face_detection_construct();
-                image = NativeMethods.dlib_array2d_uchar_new();
-
-                NativeMethods.dlib_load_bmp_array2d_uchar(image, imageBytes, new IntPtr(imageBytes.Length));
-                NativeMethods.dlib_pyramid_up_array2d_uchar(image);
-
                 dets = NativeMethods.vector_Rect_new1();
                 NativeMethods.dlib_dnn_mmod_face_detection_operator(detector, image, dets);
                 unsafe
@@ -143,9 +141,9 @@ namespace DlibSharp.Tests
             finally
             {
                 if (image != IntPtr.Zero)
-                    NativeMethods.dlib_array2d_uchar_delete(image);
+                    NativeMethods.dlib_matrix_rgbpixel_delete(image);
                 if (detector != IntPtr.Zero)
-                    NativeMethods.dlib_frontal_face_detector_delete(detector);
+                    NativeMethods.dlib_dnn_mmod_face_detection_delete(detector);
                 if (dets != IntPtr.Zero)
                     NativeMethods.vector_Rect_delete(dets);
             }

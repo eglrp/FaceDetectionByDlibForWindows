@@ -12,7 +12,7 @@ EXTERN_API dlib::frontal_face_detector *dlib_get_frontal_face_detector()
 
 EXTERN_API void dlib_frontal_face_detector_delete(dlib::frontal_face_detector *obj)
 {
-    delete obj;
+	if (obj != nullptr) { delete obj; obj = nullptr; }
 }
 
 EXTERN_API void dlib_frontal_face_detector_operator(

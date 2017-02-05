@@ -33,6 +33,9 @@
     <ClInclude Include="dnn_mmod_face_detection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="matrix_rgbpixel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DlibExtern.cpp">
@@ -48,6 +51,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="dnn_mmod_face_detection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="matrix_rgbpixel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
