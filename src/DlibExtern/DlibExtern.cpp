@@ -15,7 +15,7 @@
 #elif defined(PLATFORM_IS_x64)
 #define X86_OR_X64 "x64"
 #define WIN32_OR_X64 "x64"
-#elif
+#else
 #error "It is necessary to define 'PLATFORM_IS_$(Platform);' in 'Preprocessor Definition' on your Visual Studio project property."
 #endif
 
