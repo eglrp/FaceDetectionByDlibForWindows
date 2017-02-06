@@ -11,7 +11,8 @@
         static void Main()
         {
             var test = new FaceDetector();
-            test.RawApiDnnMmodDetectionUsingMemoryInput();
+            test.RawApiSimpleDetectionUsingMemoryInput();
+            //test.RawApiDnnMmodDetectionUsingMemoryInput();
         }
     }
 }
