@@ -12,7 +12,7 @@
         {
             var test = new FaceDetector();
             test.RawApiFrontalFaceDetectorUsingMemoryInput();
-            test.RawApiDnnMmodDetectionUsingMemoryInput();
+            for (int i = 0; i < 10; i++) { test.RawApiDnnMmodDetectionUsingMemoryInput(); }
         }
     }
 }
