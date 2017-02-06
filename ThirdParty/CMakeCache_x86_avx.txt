@@ -23,10 +23,10 @@ CMAKE_BUILD_TYPE:STRING=Release
 CMAKE_CONFIGURATION_TYPES:STRING=Debug;Release
 
 //Flags used by the compiler during all C++ builds.
-CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /W3 /GR /EHsc -DDLIB_DISABLE_ASSERTS -DDLIB_JPEG_SUPPORT    -DDLIB_PNG_SUPPORT   /bigobj
+CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /W3 /GR /EHsc /bigobj -DDLIB_JPEG_SUPPORT    -DDLIB_PNG_SUPPORT   /bigobj
 
-//Flags used by the compiler during debug builds.
-CMAKE_CXX_FLAGS_DEBUG:STRING=/D_DEBUG /MDd /Zi /Ob0 /Od /RTC1
+//Flags used by the compiler during C++ debug builds.
+CMAKE_CXX_FLAGS_DEBUG:STRING=/D_DEBUG /MDd /Zi /Ob0 /Od /RTC1 -DENABLE_ASSERTS
 
 //Flags used by the compiler during release builds for minimum
 // size.
@@ -76,7 +76,7 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=/INCREMENTAL:NO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/Project
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/examples
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/link.exe
@@ -97,7 +97,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELEASE:STRING=/INCREMENTAL:NO
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Project
+CMAKE_PROJECT_NAME:STATIC=examples
 
 //RC compiler
 CMAKE_RC_COMPILER:FILEPATH=rc
@@ -292,13 +292,13 @@ DLIB_NO_GUI_SUPPORT:BOOL=OFF
 DLIB_PNG_SUPPORT:BOOL=ON
 
 //Disable this if you don't want to use a BLAS library
-DLIB_USE_BLAS:BOOL=OFF
+DLIB_USE_BLAS:STRING=OFF
 
 //Disable this if you don't want to use NVIDIA CUDA
 DLIB_USE_CUDA:STRING=OFF
 
 //Disable this if you don't want to use a LAPACK library
-DLIB_USE_LAPACK:BOOL=OFF
+DLIB_USE_LAPACK:STRING=OFF
 
 //Disable this is you don't want to use the MKL DFTI FFT implementation
 DLIB_USE_MKL_FFT:STRING=OFF
@@ -315,9 +315,8 @@ JPEG_INCLUDE_DIR:PATH=
 //Path to a library.
 JPEG_LIBRARY:FILEPATH=
 
-//Install location of libraries (e.g. lib32 or lib64 for multilib
-// installations)
-LIB_INSTALL_DIR:STRING=lib
+//The directory containing a CMake configuration file for OpenCV.
+OpenCV_DIR:PATH=OpenCV_DIR-NOTFOUND
 
 //Path to a library.
 PNG_LIBRARY_DEBUG:FILEPATH=PNG_LIBRARY_DEBUG-NOTFOUND
@@ -327,6 +326,15 @@ PNG_LIBRARY_RELEASE:FILEPATH=
 
 //Path to a file.
 PNG_PNG_INCLUDE_DIR:PATH=
+
+//Compile your program with AVX instructions
+USE_AVX_INSTRUCTIONS:BOOL=ON
+
+//Compile your program with SSE2 instructions
+USE_SSE2_INSTRUCTIONS:BOOL=OFF
+
+//Compile your program with SSE4 instructions
+USE_SSE4_INSTRUCTIONS:BOOL=OFF
 
 //Path to a file.
 ZLIB_INCLUDE_DIR:PATH=
