@@ -33,7 +33,7 @@ namespace DlibSharp.Tests
         /// https://github.com/davisking/dlib/blob/master/examples/face_detection_ex.cpp
         /// </summary>
         [Test]
-        public void RawApiSimpleDetection()
+        public void RawApiFrontalFaceDetector()
         {
             const string imagePath = "images\\lenna.bmp";
 
@@ -72,7 +72,7 @@ namespace DlibSharp.Tests
         }
 
         [Test]
-        public void RawApiSimpleDetectionUsingMemoryInput()
+        public void RawApiFrontalFaceDetectorUsingMemoryInput()
         {
             const string imagePath = "images\\lenna.bmp";
             var imageBytes = File.ReadAllBytes(imagePath);
@@ -123,7 +123,7 @@ namespace DlibSharp.Tests
             {
                 image = NativeMethods.dlib_matrix_rgbpixel_new();
                 NativeMethods.dlib_load_bmp_matrix_rgbpixel(image, imageBytes, new IntPtr(imageBytes.Length));
-                //NativeMethods.dlib_pyramid_up_matrix_rgbpixel(image);
+                NativeMethods.dlib_pyramid_up_matrix_rgbpixel(image);
 
                 dets = NativeMethods.vector_Rect_new1();
                 detector = NativeMethods.dlib_dnn_mmod_face_detection_construct();

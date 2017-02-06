@@ -1,4 +1,5 @@
-#include "CommonSymbolsWithDlib.h"
+#ifndef __LINKINGLIBRARIESSETTINGS_H__
+#define __LINKINGLIBRARIESSETTINGS_H__
 
 #if defined(PLATFORM_IS_Win32)
 
@@ -24,4 +25,4 @@
 
 #endif
 
-#pragma comment(lib, DLIB_SRC_ROOT_PATH DLIB_LIB_DIR_NAME "/dlib_build/" DEBUG_OR_RELEASE "/dlib.lib")
+#endif

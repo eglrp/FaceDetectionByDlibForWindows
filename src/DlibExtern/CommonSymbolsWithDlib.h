@@ -2,14 +2,13 @@
 #define __COMMONSYMBOLSWITHDLIB_H__
 
 
-#define DLIBEXTERN_USE_MKL_BLAS 1
-#define DLIBEXTERN_USE_CUDA     1
-#define DLIB_SRC_ROOT_PATH  "../../ThirdParty/"
-
+#define DLIBEXTERN_USE_MKL_BLAS	1
+#define DLIBEXTERN_USE_CUDA		1
 
 #define DLIB_JPEG_SUPPORT
 #define DLIB_JPEG_STATIC
 #define DLIB_PNG_SUPPORT
+//#define DLIB_DISABLE_ASSERT
 
 
 #ifdef _DEBUG
