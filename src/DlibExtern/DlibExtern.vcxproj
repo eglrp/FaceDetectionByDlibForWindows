@@ -102,8 +102,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(LocalDebuggerCommand)" "$(ProjectDir)..\DlibSharp\DlibExtern.dll"
-copy "$(LocalDebuggerCommand)" "$(ProjectDir)..\DlibSharp\DlibExtern.pdb"</Command>
+      <Command>copy "$(OutDir)\DlibExtern.dll" "$(ProjectDir)..\DlibSharp\DlibExtern.dll"
+copy "$(OutDir)\DlibExtern.pdb" "$(ProjectDir)..\DlibSharp\DlibExtern.pdb"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -120,8 +120,8 @@ copy "$(LocalDebuggerCommand)" "$(ProjectDir)..\DlibSharp\DlibExtern.pdb"</Comma
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(LocalDebuggerCommand)" "$(ProjectDir)..\DlibSharp\DlibExtern.dll"
-copy "$(LocalDebuggerCommand)" "$(ProjectDir)..\DlibSharp\DlibExtern.pdb"</Command>
+      <Command>copy "$(OutDir)\DlibExtern.dll" "$(ProjectDir)..\DlibSharp\DlibExtern.dll"
+copy "$(OutDir)\DlibExtern.pdb" "$(ProjectDir)..\DlibSharp\DlibExtern.pdb"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -141,7 +141,7 @@ copy "$(LocalDebuggerCommand)" "$(ProjectDir)..\DlibSharp\DlibExtern.pdb"</Comma
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(LocalDebuggerCommand)" "$(ProjectDir)..\DlibSharp\DlibExtern.dll"</Command>
+      <Command>copy "$(OutDir)\DlibExtern.dll" "$(ProjectDir)..\DlibSharp\DlibExtern.dll"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -162,7 +162,7 @@ copy "$(LocalDebuggerCommand)" "$(ProjectDir)..\DlibSharp\DlibExtern.pdb"</Comma
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(LocalDebuggerCommand)" "$(ProjectDir)..\DlibSharp\DlibExtern.dll"</Command>
+      <Command>copy "$(OutDir)\DlibExtern.dll" "$(ProjectDir)..\DlibSharp\DlibExtern.dll"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
