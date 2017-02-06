@@ -1,6 +1,7 @@
 #ifndef __DLIBEXTERN_H__
 #define __DLIBEXTERN_H__
 
+#include "CommonSymbolsWithDlib.h"
 #include <dlib/geometry/rectangle.h>
 
 // 以下の ifdef ブロックは DLL からのエクスポートを容易にするマクロを作成するための 

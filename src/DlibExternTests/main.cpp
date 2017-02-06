@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include "../DlibExtern/LinkingLibrariesSettings.h"
+
 #include "../DlibExtern/DlibExtern.h"
 #include "../DlibExtern/array2d.h"
 #include "../DlibExtern/matrix_rgbpixel.h"
@@ -8,14 +10,6 @@
 #include "../DlibExtern/dnn_mmod_face_detection.h"
 
 void test_dlibextern_dnn_mmod();
-
-#ifdef _DEBUG
-#define DEBUG_OR_RELEASE "Debug"
-#else
-#define DEBUG_OR_RELEASE "Release"
-#endif
-
-#pragma comment(lib, "../../ThirdParty/bin/dlib_build_Win32_AVX/" DEBUG_OR_RELEASE "/dlib_build_Win32_AVX.lib")
 
 int main(void)
 {

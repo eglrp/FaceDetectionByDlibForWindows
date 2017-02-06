@@ -1,6 +1,7 @@
 #ifndef __DLIBEXTERN_MATRIX_RGBPIXEL_H__
 #define __DLIBEXTERN_MATRIX_RGBPIXEL_H__
 
+#include "CommonSymbolsWithDlib.h"
 #include "DlibExtern.h"
 #include <dlib/image_io.h>
 #include <dlib/image_transforms/interpolation.h>

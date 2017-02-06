@@ -13,9 +13,9 @@
 # EXTERNAL cache entries
 ########################
 
-//CMAKE_PROJECT_NAME:STATIC=dlib_x86_avx
-//CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION:STRING=8.1
-CMAKE_SUPPRESS_REGENERATION:BOOL=TRUE
+// values which I want to change 
+//PROJECT_NAME=dlib_x86_avx
+CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION:STRING=8.1
 
 //Choose the type of build, options are: Debug Release
 //\n      RelWithDebInfo MinSizeRel.
@@ -27,7 +27,7 @@ CMAKE_BUILD_TYPE:STRING=Release
 CMAKE_CONFIGURATION_TYPES:STRING=Debug;Release
 
 //Flags used by the compiler during all C++ builds.
-CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /W3 /GR /EHsc /bigobj -DDLIB_JPEG_SUPPORT    -DDLIB_PNG_SUPPORT   /bigobj -DDLIB_DISABLE_ASSERTS
+CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /W3 /GR /EHsc /bigobj -DDLIB_JPEG_SUPPORT    -DDLIB_PNG_SUPPORT   /bigobj
 
 //Flags used by the compiler during C++ debug builds.
 CMAKE_CXX_FLAGS_DEBUG:STRING=/D_DEBUG /MDd /Zi /Ob0 /Od /RTC1 -DENABLE_ASSERTS
@@ -80,7 +80,7 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=/INCREMENTAL:NO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/examples
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/dlib/x86_avx/examples
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/link.exe
@@ -142,6 +142,9 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE:STRING=
 
 //Flags used by the linker during Release with Debug Info builds.
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
+
+//Settings this value true delete reference to ZERO_CHECK
+CMAKE_SUPPRESS_REGENERATION:BOOL=TRUE
 
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
@@ -315,6 +318,10 @@ JPEG_INCLUDE_DIR:PATH=
 
 //Path to a library.
 JPEG_LIBRARY:FILEPATH=
+
+//Install location of libraries (e.g. lib32 or lib64 for multilib
+// installations)
+LIB_INSTALL_DIR:STRING=lib32
 
 //The directory containing a CMake configuration file for OpenCV.
 OpenCV_DIR:PATH=OpenCV_DIR-NOTFOUND

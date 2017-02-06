@@ -1,6 +1,7 @@
 #ifndef __DLIBEXTERN_STD_VECTOR__
 #define __DLIBEXTERN_STD_VECTOR__
 
+#include "CommonSymbolsWithDlib.h"
 #include "DlibExtern.h"
 #include <vector>
 

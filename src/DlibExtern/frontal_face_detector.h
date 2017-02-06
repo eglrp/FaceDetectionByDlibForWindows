@@ -1,6 +1,7 @@
 #ifndef __DLIBEXTERN_FRONTAL_FACE_DETECTOR_H__
 #define __DLIBEXTERN_FRONTAL_FACE_DETECTOR_H__
 
+#include "CommonSymbolsWithDlib.h"
 #include "DlibExtern.h"
 #include <dlib/image_processing/frontal_face_detector.h>
 

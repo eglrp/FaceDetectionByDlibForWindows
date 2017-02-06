@@ -1,6 +1,7 @@
 #ifndef __DLIBEXTERN_DNN_MMOD_FACE_DETECTION_H__
 #define __DLIBEXTERN_DNN_MMOD_FACE_DETECTION_H__
 
+#include "CommonSymbolsWithDlib.h"
 #include "DlibExtern.h"
 
 #include <iostream>

@@ -1,6 +1,7 @@
 #ifndef __DLIBEXTERN_ARRAY2D_H__
 #define __DLIBEXTERN_ARRAY2D_H__
 
+#include "CommonSymbolsWithDlib.h"
 #include "DlibExtern.h"
 #include <dlib/image_io.h>
 #include <dlib/image_transforms/interpolation.h>

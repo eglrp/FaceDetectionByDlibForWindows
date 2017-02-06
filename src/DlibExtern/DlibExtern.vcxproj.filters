@@ -36,6 +36,9 @@
     <ClInclude Include="matrix_rgbpixel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CommonSymbolsWithDlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DlibExtern.cpp">
@@ -54,6 +57,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="matrix_rgbpixel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkingLibrariesSettings.h">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
