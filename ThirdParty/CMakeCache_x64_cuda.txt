@@ -13,6 +13,10 @@
 # EXTERNAL cache entries
 ########################
 
+//CMAKE_PROJECT_NAME:STATIC=dlib_x64_cuda
+//CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION:STRING=8.1
+CMAKE_SUPPRESS_REGENERATION:BOOL=TRUE
+
 //Choose the type of build, options are: Debug Release
 //\n      RelWithDebInfo MinSizeRel.
 CMAKE_BUILD_TYPE:STRING=Release
@@ -95,9 +99,6 @@ CMAKE_MODULE_LINKER_FLAGS_RELEASE:STRING=/INCREMENTAL:NO
 
 //Flags used by the linker during Release with Debug Info builds.
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
-
-//Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Project
 
 //RC compiler
 CMAKE_RC_COMPILER:FILEPATH=rc
@@ -320,7 +321,7 @@ JPEG_LIBRARY:FILEPATH=
 LIB_INSTALL_DIR:STRING=lib
 
 //The directory containing a CMake configuration file for OpenCV.
-OpenCV_DIR:PATH=
+OpenCV_DIR:PATH=OpenCV_DIR-NOTFOUND
 
 //Path to a library.
 PNG_LIBRARY_DEBUG:FILEPATH=PNG_LIBRARY_DEBUG-NOTFOUND

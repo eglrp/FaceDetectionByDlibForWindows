@@ -13,6 +13,10 @@
 # EXTERNAL cache entries
 ########################
 
+//CMAKE_PROJECT_NAME:STATIC=dlib_x86_mkl
+//CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION:STRING=8.1
+CMAKE_SUPPRESS_REGENERATION:BOOL=TRUE
+
 //Choose the type of build, options are: Debug Release
 //\n      RelWithDebInfo MinSizeRel.
 CMAKE_BUILD_TYPE:STRING=Release
@@ -95,9 +99,6 @@ CMAKE_MODULE_LINKER_FLAGS_RELEASE:STRING=/INCREMENTAL:NO
 
 //Flags used by the linker during Release with Debug Info builds.
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
-
-//Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=examples
 
 //RC compiler
 CMAKE_RC_COMPILER:FILEPATH=rc
@@ -310,10 +311,10 @@ GIF_INCLUDE_DIR:PATH=GIF_INCLUDE_DIR-NOTFOUND
 GIF_LIBRARY:FILEPATH=GIF_LIBRARY-NOTFOUND
 
 //Path to a file.
-JPEG_INCLUDE_DIR:PATH=C:/Program Files/Anaconda3/Library/include
+JPEG_INCLUDE_DIR:PATH=
 
 //Path to a library.
-JPEG_LIBRARY:FILEPATH=C:/Program Files/Anaconda3/Library/lib/jpeg.lib
+JPEG_LIBRARY:FILEPATH=
 
 //Install location of libraries (e.g. lib32 or lib64 for multilib
 // installations)
@@ -326,10 +327,10 @@ OpenCV_DIR:PATH=OpenCV_DIR-NOTFOUND
 PNG_LIBRARY_DEBUG:FILEPATH=PNG_LIBRARY_DEBUG-NOTFOUND
 
 //Path to a library.
-PNG_LIBRARY_RELEASE:FILEPATH=C:/Program Files/Anaconda3/Library/lib/png.lib
+PNG_LIBRARY_RELEASE:FILEPATH=
 
 //Path to a file.
-PNG_PNG_INCLUDE_DIR:PATH=C:/Program Files/Anaconda3/Library/include
+PNG_PNG_INCLUDE_DIR:PATH=
 
 //Compile your program with AVX instructions
 USE_AVX_INSTRUCTIONS:BOOL=ON
@@ -341,13 +342,13 @@ USE_SSE2_INSTRUCTIONS:BOOL=OFF
 USE_SSE4_INSTRUCTIONS:BOOL=OFF
 
 //Path to a file.
-ZLIB_INCLUDE_DIR:PATH=C:/Program Files/Anaconda3/Library/include
+ZLIB_INCLUDE_DIR:PATH=
 
 //Path to a library.
 ZLIB_LIBRARY_DEBUG:FILEPATH=ZLIB_LIBRARY_DEBUG-NOTFOUND
 
 //Path to a library.
-ZLIB_LIBRARY_RELEASE:FILEPATH=C:/Program Files/Anaconda3/Library/lib/z.lib
+ZLIB_LIBRARY_RELEASE:FILEPATH=
 
 //Dependencies for the target
 dlib_LIB_DEPENDS:STATIC=general;ws2_32;general;winmm;general;comctl32;general;gdi32;general;imm32;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_intel_c.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_core.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_intel_thread.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/compiler/lib/ia32/libiomp5md.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_intel_c.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_core.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_intel_thread.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/compiler/lib/ia32/libiomp5md.lib;

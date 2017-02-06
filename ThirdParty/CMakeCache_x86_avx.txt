@@ -13,6 +13,10 @@
 # EXTERNAL cache entries
 ########################
 
+//CMAKE_PROJECT_NAME:STATIC=dlib_x86_avx
+//CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION:STRING=8.1
+CMAKE_SUPPRESS_REGENERATION:BOOL=TRUE
+
 //Choose the type of build, options are: Debug Release
 //\n      RelWithDebInfo MinSizeRel.
 CMAKE_BUILD_TYPE:STRING=Release
@@ -23,7 +27,7 @@ CMAKE_BUILD_TYPE:STRING=Release
 CMAKE_CONFIGURATION_TYPES:STRING=Debug;Release
 
 //Flags used by the compiler during all C++ builds.
-CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /W3 /GR /EHsc /bigobj -DDLIB_JPEG_SUPPORT    -DDLIB_PNG_SUPPORT   /bigobj
+CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /W3 /GR /EHsc /bigobj -DDLIB_JPEG_SUPPORT    -DDLIB_PNG_SUPPORT   /bigobj -DDLIB_DISABLE_ASSERTS
 
 //Flags used by the compiler during C++ debug builds.
 CMAKE_CXX_FLAGS_DEBUG:STRING=/D_DEBUG /MDd /Zi /Ob0 /Od /RTC1 -DENABLE_ASSERTS
@@ -95,9 +99,6 @@ CMAKE_MODULE_LINKER_FLAGS_RELEASE:STRING=/INCREMENTAL:NO
 
 //Flags used by the linker during Release with Debug Info builds.
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
-
-//Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=examples
 
 //RC compiler
 CMAKE_RC_COMPILER:FILEPATH=rc

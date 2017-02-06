@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DlibExtern", "DlibExtern\DlibExtern.vcxproj", "{9362E93D-16B9-42AB-B9FD-D825D183975E}"
-	ProjectSection(ProjectDependencies) = postProject
-		{42945F4A-E8C8-30D9-B5BC-6BA1F1B84223} = {42945F4A-E8C8-30D9-B5BC-6BA1F1B84223}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DlibSharp", "DlibSharp\DlibSharp.csproj", "{BF03D6A2-F237-4CBA-B64C-A05B1939F99D}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -14,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DlibSharp", "DlibSharp\Dlib
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DlibSharp.Tests", "DlibSharp.Tests\DlibSharp.Tests.csproj", "{30DEA6E6-775E-4763-8C94-EAF04D24B5BF}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dlib_build_Win32_AVX", "..\ThirdParty\dlib_build_Win32_AVX.vcxproj", "{42945F4A-E8C8-30D9-B5BC-6BA1F1B84223}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DlibExternTests", "DlibExternTests\DlibExternTests.vcxproj", "{C57091F9-04AD-4FF1-BA90-D62C31E5E812}"
 EndProject
@@ -51,12 +46,6 @@ Global
 		{30DEA6E6-775E-4763-8C94-EAF04D24B5BF}.Release|x64.Build.0 = Release|Any CPU
 		{30DEA6E6-775E-4763-8C94-EAF04D24B5BF}.Release|x86.ActiveCfg = Release|x86
 		{30DEA6E6-775E-4763-8C94-EAF04D24B5BF}.Release|x86.Build.0 = Release|x86
-		{42945F4A-E8C8-30D9-B5BC-6BA1F1B84223}.Debug|x64.ActiveCfg = Debug|Win32
-		{42945F4A-E8C8-30D9-B5BC-6BA1F1B84223}.Debug|x86.ActiveCfg = Debug|Win32
-		{42945F4A-E8C8-30D9-B5BC-6BA1F1B84223}.Debug|x86.Build.0 = Debug|Win32
-		{42945F4A-E8C8-30D9-B5BC-6BA1F1B84223}.Release|x64.ActiveCfg = Release|Win32
-		{42945F4A-E8C8-30D9-B5BC-6BA1F1B84223}.Release|x86.ActiveCfg = Release|Win32
-		{42945F4A-E8C8-30D9-B5BC-6BA1F1B84223}.Release|x86.Build.0 = Release|Win32
 		{C57091F9-04AD-4FF1-BA90-D62C31E5E812}.Debug|x64.ActiveCfg = Debug|x64
 		{C57091F9-04AD-4FF1-BA90-D62C31E5E812}.Debug|x64.Build.0 = Debug|x64
 		{C57091F9-04AD-4FF1-BA90-D62C31E5E812}.Debug|x86.ActiveCfg = Debug|Win32
