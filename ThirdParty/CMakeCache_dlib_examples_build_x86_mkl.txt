@@ -14,7 +14,7 @@
 ########################
 
 // values which I want to change 
-//PROJECT_NAME=dlib_x64_cuda
+//PROJECT_NAME=dlib_x86_mkl
 CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION:STRING=8.1
 
 //Choose the type of build, options are: Debug Release
@@ -27,20 +27,20 @@ CMAKE_BUILD_TYPE:STRING=Release
 CMAKE_CONFIGURATION_TYPES:STRING=Debug;Release
 
 //Flags used by the compiler during all C++ builds.
-CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /W3 /GR /EHsc /bigobj -DDLIB_JPEG_SUPPORT   -DDLIB_USE_CUDA -DDLIB_PNG_SUPPORT   /bigobj
+CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /W3 /GR /EHsc /bigobj -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK  -DDLIB_PNG_SUPPORT
 
 //Flags used by the compiler during C++ debug builds.
-CMAKE_CXX_FLAGS_DEBUG:STRING=/D_DEBUG /MDd /Zi /Ob0 /Od /RTC1 -DENABLE_ASSERTS
+CMAKE_CXX_FLAGS_DEBUG:STRING=/D_DEBUG /MTd /Zi /Ob0 /Od /RTC1 -DENABLE_ASSERTS
 
 //Flags used by the compiler during release builds for minimum
 // size.
-CMAKE_CXX_FLAGS_MINSIZEREL:STRING=/MD /O1 /Ob1 /DNDEBUG
+CMAKE_CXX_FLAGS_MINSIZEREL:STRING=/MT /O1 /Ob1 /DNDEBUG
 
 //Flags used by the compiler during release builds.
-CMAKE_CXX_FLAGS_RELEASE:STRING=/MD /O2 /Ob2 /DNDEBUG
+CMAKE_CXX_FLAGS_RELEASE:STRING=/MT /O2 /Ob2 /DNDEBUG
 
 //Flags used by the compiler during release builds with debug info.
-CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/MD /Zi /O2 /Ob1 /DNDEBUG
+CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/MT /Zi /O2 /Ob1 /DNDEBUG
 
 //Libraries linked by default with all C++ applications.
 CMAKE_CXX_STANDARD_LIBRARIES:STRING=kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
@@ -49,23 +49,23 @@ CMAKE_CXX_STANDARD_LIBRARIES:STRING=kernel32.lib user32.lib gdi32.lib winspool.l
 CMAKE_C_FLAGS:STRING=/DWIN32 /D_WINDOWS /W3
 
 //Flags used by the compiler during debug builds.
-CMAKE_C_FLAGS_DEBUG:STRING=/D_DEBUG /MDd /Zi /Ob0 /Od /RTC1
+CMAKE_C_FLAGS_DEBUG:STRING=/D_DEBUG /MTd /Zi /Ob0 /Od /RTC1
 
 //Flags used by the compiler during release builds for minimum
 // size.
-CMAKE_C_FLAGS_MINSIZEREL:STRING=/MD /O1 /Ob1 /DNDEBUG
+CMAKE_C_FLAGS_MINSIZEREL:STRING=/MT /O1 /Ob1 /DNDEBUG
 
 //Flags used by the compiler during release builds.
-CMAKE_C_FLAGS_RELEASE:STRING=/MD /O2 /Ob2 /DNDEBUG
+CMAKE_C_FLAGS_RELEASE:STRING=/MT /O2 /Ob2 /DNDEBUG
 
 //Flags used by the compiler during release builds with debug info.
-CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=/MD /Zi /O2 /Ob1 /DNDEBUG
+CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=/MT /Zi /O2 /Ob1 /DNDEBUG
 
 //Libraries linked by default with all C applications.
 CMAKE_C_STANDARD_LIBRARIES:STRING=kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
 
 //Flags used by the linker.
-CMAKE_EXE_LINKER_FLAGS:STRING=/machine:x64
+CMAKE_EXE_LINKER_FLAGS:STRING=/machine:X86
 
 //Flags used by the linker during debug builds.
 CMAKE_EXE_LINKER_FLAGS_DEBUG:STRING=/debug /INCREMENTAL
@@ -80,13 +80,13 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=/INCREMENTAL:NO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files/dlib/x64_cuda/examples
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/dlib/x86_mkl/examples
 
 //Path to a program.
-CMAKE_LINKER:FILEPATH=C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/link.exe
+CMAKE_LINKER:FILEPATH=C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/link.exe
 
 //Flags used by the linker during the creation of modules.
-CMAKE_MODULE_LINKER_FLAGS:STRING=/machine:x64
+CMAKE_MODULE_LINKER_FLAGS:STRING=/machine:X86
 
 //Flags used by the linker during debug builds.
 CMAKE_MODULE_LINKER_FLAGS_DEBUG:STRING=/debug /INCREMENTAL
@@ -107,7 +107,7 @@ CMAKE_RC_COMPILER:FILEPATH=rc
 CMAKE_RC_FLAGS:STRING=/DWIN32
 
 //Flags used by the linker during the creation of dll's.
-CMAKE_SHARED_LINKER_FLAGS:STRING=/machine:x64
+CMAKE_SHARED_LINKER_FLAGS:STRING=/machine:X86
 
 //Flags used by the linker during debug builds.
 CMAKE_SHARED_LINKER_FLAGS_DEBUG:STRING=/debug /INCREMENTAL
@@ -129,7 +129,7 @@ CMAKE_SKIP_INSTALL_RPATH:BOOL=OFF
 CMAKE_SKIP_RPATH:BOOL=OFF
 
 //Flags used by the linker during the creation of static libraries.
-CMAKE_STATIC_LINKER_FLAGS:STRING=/machine:x64
+CMAKE_STATIC_LINKER_FLAGS:STRING=/machine:X86
 
 //Flags used by the linker during debug builds.
 CMAKE_STATIC_LINKER_FLAGS_DEBUG:STRING=
@@ -153,7 +153,7 @@ CMAKE_SUPPRESS_REGENERATION:BOOL=TRUE
 CMAKE_VERBOSE_MAKEFILE:BOOL=OFF
 
 //Compile device code in 64 bit mode
-CUDA_64_BIT_DEVICE_CODE:BOOL=ON
+CUDA_64_BIT_DEVICE_CODE:BOOL=OFF
 
 //Attach the build rule to the CUDA source file.  Enable only when
 // the CUDA source file is added to at most one target.
@@ -166,10 +166,10 @@ CUDA_BUILD_CUBIN:BOOL=OFF
 CUDA_BUILD_EMULATION:BOOL=OFF
 
 //"cudart" library
-CUDA_CUDART_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/cudart.lib
+CUDA_CUDART_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/Win32/cudart.lib
 
 //"cuda" library (older versions only).
-CUDA_CUDA_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/cuda.lib
+CUDA_CUDA_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/Win32/cuda.lib
 
 //Directory to put all the output files.  If blank it will default
 // to the CMAKE_CURRENT_BINARY_DIR
@@ -228,46 +228,46 @@ CUDA_VERBOSE_BUILD:BOOL=OFF
 CUDA_VERSION:STRING=8.0
 
 //"cublas" library
-CUDA_cublas_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/cublas.lib
+CUDA_cublas_LIBRARY:FILEPATH=CUDA_cublas_LIBRARY-NOTFOUND
 
 //"cublas_device" library
-CUDA_cublas_device_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/cublas_device.lib
+CUDA_cublas_device_LIBRARY:FILEPATH=CUDA_cublas_device_LIBRARY-NOTFOUND
 
 //"cudadevrt" library
-CUDA_cudadevrt_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/cudadevrt.lib
+CUDA_cudadevrt_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/Win32/cudadevrt.lib
 
 //static CUDA runtime library
-CUDA_cudart_static_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/cudart_static.lib
+CUDA_cudart_static_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/Win32/cudart_static.lib
 
 //"cufft" library
-CUDA_cufft_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/cufft.lib
+CUDA_cufft_LIBRARY:FILEPATH=CUDA_cufft_LIBRARY-NOTFOUND
 
 //"cupti" library
-CUDA_cupti_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/extras/CUPTI/libx64/cupti.lib
+CUDA_cupti_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/extras/CUPTI/libWin32/cupti.lib
 
 //"curand" library
-CUDA_curand_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/curand.lib
+CUDA_curand_LIBRARY:FILEPATH=CUDA_curand_LIBRARY-NOTFOUND
 
 //"cusolver" library
-CUDA_cusolver_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/cusolver.lib
+CUDA_cusolver_LIBRARY:FILEPATH=CUDA_cusolver_LIBRARY-NOTFOUND
 
 //"cusparse" library
-CUDA_cusparse_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/cusparse.lib
+CUDA_cusparse_LIBRARY:FILEPATH=CUDA_cusparse_LIBRARY-NOTFOUND
 
 //"nppc" library
-CUDA_nppc_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/nppc.lib
+CUDA_nppc_LIBRARY:FILEPATH=CUDA_nppc_LIBRARY-NOTFOUND
 
 //"nppi" library
-CUDA_nppi_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/nppi.lib
+CUDA_nppi_LIBRARY:FILEPATH=CUDA_nppi_LIBRARY-NOTFOUND
 
 //"npps" library
-CUDA_npps_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/npps.lib
+CUDA_npps_LIBRARY:FILEPATH=CUDA_npps_LIBRARY-NOTFOUND
 
 //"nvcuvenc" library
 CUDA_nvcuvenc_LIBRARY:FILEPATH=CUDA_nvcuvenc_LIBRARY-NOTFOUND
 
 //"nvcuvid" library
-CUDA_nvcuvid_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/nvcuvid.lib
+CUDA_nvcuvid_LIBRARY:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/Win32/nvcuvid.lib
 
 //Enable this if you want to turn on the DLIB_ASSERT macro
 DLIB_ENABLE_ASSERTS:BOOL=OFF
@@ -296,13 +296,13 @@ DLIB_NO_GUI_SUPPORT:BOOL=OFF
 DLIB_PNG_SUPPORT:BOOL=ON
 
 //Disable this if you don't want to use a BLAS library
-DLIB_USE_BLAS:STRING=OFF
+DLIB_USE_BLAS:BOOL=ON
 
 //Disable this if you don't want to use NVIDIA CUDA
-DLIB_USE_CUDA:BOOL=ON
+DLIB_USE_CUDA:STRING=OFF
 
 //Disable this if you don't want to use a LAPACK library
-DLIB_USE_LAPACK:STRING=OFF
+DLIB_USE_LAPACK:BOOL=ON
 
 //Disable this is you don't want to use the MKL DFTI FFT implementation
 DLIB_USE_MKL_FFT:STRING=OFF
@@ -321,10 +321,10 @@ JPEG_LIBRARY:FILEPATH=
 
 //Install location of libraries (e.g. lib32 or lib64 for multilib
 // installations)
-LIB_INSTALL_DIR:STRING=lib64
+LIB_INSTALL_DIR:STRING=lib32
 
 //The directory containing a CMake configuration file for OpenCV.
-OpenCV_DIR:PATH=OpenCV_DIR-NOTFOUND
+OpenCV_DIR:PATH=../../opencv_x86/install/
 
 //Path to a library.
 PNG_LIBRARY_DEBUG:FILEPATH=PNG_LIBRARY_DEBUG-NOTFOUND
@@ -353,26 +353,20 @@ ZLIB_LIBRARY_DEBUG:FILEPATH=ZLIB_LIBRARY_DEBUG-NOTFOUND
 //Path to a library.
 ZLIB_LIBRARY_RELEASE:FILEPATH=
 
-//Path to a library.
-cudnn:FILEPATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/cudnn.lib
-
-//Path to a file.
-cudnn_include:PATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/include
-
 //Dependencies for the target
-dlib_LIB_DEPENDS:STATIC=general;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/cudart_static.lib;general;ws2_32;general;winmm;general;comctl32;general;gdi32;general;imm32;general;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/cublas.lib;general;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/cublas_device.lib;general;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/cudnn.lib;general;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/curand.lib;
+dlib_LIB_DEPENDS:STATIC=general;ws2_32;general;winmm;general;comctl32;general;gdi32;general;imm32;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_intel_c.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_core.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_intel_thread.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/compiler/lib/ia32/libiomp5md.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_intel_c.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_core.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_intel_thread.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/compiler/lib/ia32/libiomp5md.lib;
 
 //Path to a library.
-mkl_core:FILEPATH=
+mkl_core:FILEPATH=C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_core.lib
 
 //Path to a library.
-mkl_intel:FILEPATH=
+mkl_intel:FILEPATH=C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_intel_c.lib
 
 //Path to a library.
-mkl_iomp:FILEPATH=
+mkl_iomp:FILEPATH=C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/compiler/lib/ia32/libiomp5md.lib
 
 //Path to a library.
-mkl_thread:FILEPATH=
+mkl_thread:FILEPATH=C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_intel_thread.lib
 
 //Path to a library.
 sqlite:FILEPATH=sqlite-NOTFOUND
@@ -436,7 +430,7 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
-CMAKE_GENERATOR:INTERNAL=Visual Studio 14 2015 Win64
+CMAKE_GENERATOR:INTERNAL=Visual Studio 14 2015
 //Name of generator platform.
 CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
@@ -491,7 +485,6 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CUDA_64_BIT_DEVICE_CODE
 CUDA_64_BIT_DEVICE_CODE-ADVANCED:INTERNAL=1
-//List of intermediate files that are part of the cuda dependency
 //ADVANCED property for variable: CUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE
 CUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CUDA_BUILD_CUBIN
@@ -572,7 +565,7 @@ CUDA_parse_cubin:INTERNAL=C:/Program Files/CMake/share/cmake-3.7/Modules/FindCUD
 //Location of run_nvcc.cmake
 CUDA_run_nvcc:INTERNAL=C:/Program Files/CMake/share/cmake-3.7/Modules/FindCUDA/run_nvcc.cmake
 //Details about finding CUDA
-FIND_PACKAGE_MESSAGE_DETAILS_CUDA:INTERNAL=[C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0][C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/bin/nvcc.exe][C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/include][C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/cudart_static.lib][v8.0(7.5)]
+FIND_PACKAGE_MESSAGE_DETAILS_CUDA:INTERNAL=[C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0][C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/bin/nvcc.exe][C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/include][C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/Win32/cudart_static.lib][v8.0(7.5)]
 //ADVANCED property for variable: GIF_INCLUDE_DIR
 GIF_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GIF_LIBRARY
@@ -592,9 +585,9 @@ JPEG_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: JPEG_LIBRARY
 JPEG_LIBRARY-ADVANCED:INTERNAL=1
 //Have function jpeg_read_header
-LIBJPEG_IS_GOOD:INTERNAL=1
+LIBJPEG_IS_GOOD:INTERNAL=
 //Have function png_create_read_struct
-LIBPNG_IS_GOOD:INTERNAL=1
+LIBPNG_IS_GOOD:INTERNAL=
 //ADVANCED property for variable: PNG_LIBRARY_DEBUG
 PNG_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PNG_LIBRARY_RELEASE
@@ -602,21 +595,13 @@ PNG_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PNG_PNG_INCLUDE_DIR
 PNG_PNG_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //CHECK_TYPE_SIZE: sizeof(void*)
-SIZE_OF_VOID_PTR:INTERNAL=8
+SIZE_OF_VOID_PTR:INTERNAL=4
 //ADVANCED property for variable: ZLIB_INCLUDE_DIR
 ZLIB_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ZLIB_LIBRARY_DEBUG
 ZLIB_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ZLIB_LIBRARY_RELEASE
 ZLIB_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
-//Result of TRY_COMPILE
-cuda_test_compile_worked:INTERNAL=TRUE
-//ADVANCED property for variable: cudnn
-cudnn-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: cudnn_include
-cudnn_include-ADVANCED:INTERNAL=1
-//Result of TRY_COMPILE
-cudnn_test_compile_worked:INTERNAL=TRUE
 //ADVANCED property for variable: mkl_core
 mkl_core-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: mkl_intel

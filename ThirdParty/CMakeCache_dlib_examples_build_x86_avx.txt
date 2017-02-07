@@ -14,7 +14,7 @@
 ########################
 
 // values which I want to change 
-//PROJECT_NAME=dlib_x86_mkl
+//PROJECT_NAME=dlib_x86_avx
 CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION:STRING=8.1
 
 //Choose the type of build, options are: Debug Release
@@ -27,20 +27,20 @@ CMAKE_BUILD_TYPE:STRING=Release
 CMAKE_CONFIGURATION_TYPES:STRING=Debug;Release
 
 //Flags used by the compiler during all C++ builds.
-CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /W3 /GR /EHsc /bigobj -DDLIB_JPEG_SUPPORT -DDLIB_USE_BLAS -DDLIB_USE_LAPACK  -DDLIB_PNG_SUPPORT
+CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /W3 /GR /EHsc /bigobj -DDLIB_JPEG_SUPPORT    -DDLIB_PNG_SUPPORT   /bigobj
 
 //Flags used by the compiler during C++ debug builds.
-CMAKE_CXX_FLAGS_DEBUG:STRING=/D_DEBUG /MDd /Zi /Ob0 /Od /RTC1 -DENABLE_ASSERTS
+CMAKE_CXX_FLAGS_DEBUG:STRING=/D_DEBUG /MTd /Zi /Ob0 /Od /RTC1 -DENABLE_ASSERTS
 
 //Flags used by the compiler during release builds for minimum
 // size.
-CMAKE_CXX_FLAGS_MINSIZEREL:STRING=/MD /O1 /Ob1 /DNDEBUG
+CMAKE_CXX_FLAGS_MINSIZEREL:STRING=/MT /O1 /Ob1 /DNDEBUG
 
 //Flags used by the compiler during release builds.
-CMAKE_CXX_FLAGS_RELEASE:STRING=/MD /O2 /Ob2 /DNDEBUG
+CMAKE_CXX_FLAGS_RELEASE:STRING=/MT /O2 /Ob2 /DNDEBUG
 
 //Flags used by the compiler during release builds with debug info.
-CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/MD /Zi /O2 /Ob1 /DNDEBUG
+CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/MT /Zi /O2 /Ob1 /DNDEBUG
 
 //Libraries linked by default with all C++ applications.
 CMAKE_CXX_STANDARD_LIBRARIES:STRING=kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
@@ -49,17 +49,17 @@ CMAKE_CXX_STANDARD_LIBRARIES:STRING=kernel32.lib user32.lib gdi32.lib winspool.l
 CMAKE_C_FLAGS:STRING=/DWIN32 /D_WINDOWS /W3
 
 //Flags used by the compiler during debug builds.
-CMAKE_C_FLAGS_DEBUG:STRING=/D_DEBUG /MDd /Zi /Ob0 /Od /RTC1
+CMAKE_C_FLAGS_DEBUG:STRING=/D_DEBUG /MTd /Zi /Ob0 /Od /RTC1
 
 //Flags used by the compiler during release builds for minimum
 // size.
-CMAKE_C_FLAGS_MINSIZEREL:STRING=/MD /O1 /Ob1 /DNDEBUG
+CMAKE_C_FLAGS_MINSIZEREL:STRING=/MT /O1 /Ob1 /DNDEBUG
 
 //Flags used by the compiler during release builds.
-CMAKE_C_FLAGS_RELEASE:STRING=/MD /O2 /Ob2 /DNDEBUG
+CMAKE_C_FLAGS_RELEASE:STRING=/MT /O2 /Ob2 /DNDEBUG
 
 //Flags used by the compiler during release builds with debug info.
-CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=/MD /Zi /O2 /Ob1 /DNDEBUG
+CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=/MT /Zi /O2 /Ob1 /DNDEBUG
 
 //Libraries linked by default with all C applications.
 CMAKE_C_STANDARD_LIBRARIES:STRING=kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
@@ -80,7 +80,7 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=/INCREMENTAL:NO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/dlib/x86_mkl/examples
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/dlib/x86_avx/examples
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/link.exe
@@ -296,13 +296,13 @@ DLIB_NO_GUI_SUPPORT:BOOL=OFF
 DLIB_PNG_SUPPORT:BOOL=ON
 
 //Disable this if you don't want to use a BLAS library
-DLIB_USE_BLAS:BOOL=ON
+DLIB_USE_BLAS:STRING=OFF
 
 //Disable this if you don't want to use NVIDIA CUDA
 DLIB_USE_CUDA:STRING=OFF
 
 //Disable this if you don't want to use a LAPACK library
-DLIB_USE_LAPACK:BOOL=ON
+DLIB_USE_LAPACK:STRING=OFF
 
 //Disable this is you don't want to use the MKL DFTI FFT implementation
 DLIB_USE_MKL_FFT:STRING=OFF
@@ -324,7 +324,7 @@ JPEG_LIBRARY:FILEPATH=
 LIB_INSTALL_DIR:STRING=lib32
 
 //The directory containing a CMake configuration file for OpenCV.
-OpenCV_DIR:PATH=OpenCV_DIR-NOTFOUND
+OpenCV_DIR:PATH=../../opencv_x86/install/
 
 //Path to a library.
 PNG_LIBRARY_DEBUG:FILEPATH=PNG_LIBRARY_DEBUG-NOTFOUND
@@ -354,19 +354,19 @@ ZLIB_LIBRARY_DEBUG:FILEPATH=ZLIB_LIBRARY_DEBUG-NOTFOUND
 ZLIB_LIBRARY_RELEASE:FILEPATH=
 
 //Dependencies for the target
-dlib_LIB_DEPENDS:STATIC=general;ws2_32;general;winmm;general;comctl32;general;gdi32;general;imm32;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_intel_c.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_core.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_intel_thread.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/compiler/lib/ia32/libiomp5md.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_intel_c.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_core.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_intel_thread.lib;general;C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/compiler/lib/ia32/libiomp5md.lib;
+dlib_LIB_DEPENDS:STATIC=general;ws2_32;general;winmm;general;comctl32;general;gdi32;general;imm32;
 
 //Path to a library.
-mkl_core:FILEPATH=C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_core.lib
+mkl_core:FILEPATH=
 
 //Path to a library.
-mkl_intel:FILEPATH=C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_intel_c.lib
+mkl_intel:FILEPATH=
 
 //Path to a library.
-mkl_iomp:FILEPATH=C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/compiler/lib/ia32/libiomp5md.lib
+mkl_iomp:FILEPATH=
 
 //Path to a library.
-mkl_thread:FILEPATH=C:/Program Files (x86)/IntelSWTools/compilers_and_libraries/windows/mkl/lib/ia32/mkl_intel_thread.lib
+mkl_thread:FILEPATH=
 
 //Path to a library.
 sqlite:FILEPATH=sqlite-NOTFOUND

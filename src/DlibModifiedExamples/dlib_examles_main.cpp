@@ -4,12 +4,16 @@
 #include "../DlibExtern/LinkingLibrariesSettings.h"
 #pragma comment(lib, THIRDPARTY_ROOT_PATH DLIB_LIB_DIR_NAME "/dlib_build/" DEBUG_OR_RELEASE "/dlib.lib")
 
-
 #ifdef _DEBUG
-#pragma comment(lib, THIRDPARTY_ROOT_PATH "opencv/build/" X86_OR_X64 "/vc14/lib/opencv_world320d.lib")
+#pragma comment(lib, THIRDPARTY_ROOT_PATH "/opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/staticlib/opencv_core320d.lib")
+#pragma comment(lib, THIRDPARTY_ROOT_PATH "/opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/staticlib/opencv_video320d.lib")
+#pragma comment(lib, THIRDPARTY_ROOT_PATH "/opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/staticlib/opencv_videoio320d.lib")
 #else
-#pragma comment(lib, THIRDPARTY_ROOT_PATH "opencv/build/" X86_OR_X64 "/vc14/lib/opencv_world320.lib")
+#pragma comment(lib, THIRDPARTY_ROOT_PATH "/opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/staticlib/opencv_core320.lib")
+#pragma comment(lib, THIRDPARTY_ROOT_PATH "/opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/staticlib/opencv_video320.lib")
+#pragma comment(lib, THIRDPARTY_ROOT_PATH "/opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/staticlib/opencv_videoio320.lib")
 #endif
+
 
 //#include <iostream>
 

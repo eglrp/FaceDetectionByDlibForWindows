@@ -254,4 +254,5 @@ paket-files/
 /ThirdParty/dlib_examples_build_x64_cuda
 /ThirdParty/dlib_examples_build_x86_avx
 /ThirdParty/dlib_examples_build_x86_mkl
-/ThirdParty/opencv
+/ThirdParty/opencv_x86
+/ThirdParty/opencv_x64
