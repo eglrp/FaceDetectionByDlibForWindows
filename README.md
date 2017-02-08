@@ -2,9 +2,9 @@
 An example program of face detection with .NET Framework wrapper of Dlib
 
 ## Requirement
-Windows 7 or above
-Visual Studio 2015
-cmake
+* Windows 7 or above
+* Visual Studio 2015
+* cmake
 
 ## License
 Boost Software License - Version 1.0 (<https://github.com/kishimoto-exvision/FaceDetectionByDlibOnWindows/blob/master/LICENSE>)
