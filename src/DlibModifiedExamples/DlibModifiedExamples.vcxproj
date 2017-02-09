@@ -28,7 +28,7 @@
     <ClCompile Include="dlib_examples\face_landmark_detection_ex.cpp" />
     <ClCompile Include="dlib_examples\video_tracking_ex.cpp" />
     <ClCompile Include="dlib_examples\webcam_face_pose_ex.cpp" />
-    <ClCompile Include="dnn_mmod_face_detection_webcam.cpp" />
+    <ClCompile Include="webcam_dnn_mmod_face_detection.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9D281011-470A-4507-8D17-A406C212AEB7}</ProjectGuid>
