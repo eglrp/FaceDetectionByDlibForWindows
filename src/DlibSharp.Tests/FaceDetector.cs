@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-
-namespace DlibSharp.Tests
+﻿namespace DlibSharp.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using NUnit.Framework;
+
     [TestFixture]
     public class FaceDetector
     {
@@ -126,7 +126,7 @@ namespace DlibSharp.Tests
                 NativeMethods.dlib_pyramid_up_matrix_rgbpixel(image);
 
                 dets = NativeMethods.vector_Rect_new1();
-                detector = NativeMethods.dlib_dnn_mmod_face_detection_construct();
+                detector = NativeMethods.dlib_dnn_mmod_face_detection_construct("./data/mmod_human_face_detector.dat");
                 NativeMethods.dlib_dnn_mmod_face_detection_operator(detector, image, dets);
                 long count = NativeMethods.vector_Rect_getSize(dets).ToInt64();
                 if (count > 0)

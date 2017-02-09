@@ -19,10 +19,15 @@ template <typename SUBNET> using rcon5 = relu<affine<con5<45, SUBNET>>>;
 
 using net_type = loss_mmod<con<1, 9, 9, 1, 1, rcon5<rcon5<rcon5<downsampler<input_rgb_image_pyramid<pyramid_down<6>>>>>>>>;
 
-EXTERN_API net_type* dlib_dnn_mmod_face_detection_construct()
+EXTERN_API int dlib_cuda_get_num_devices()
+{
+	return dlib::cuda::get_num_devices();
+}
+
+EXTERN_API net_type* dlib_dnn_mmod_face_detection_construct(const char *file_name)
 {
 	net_type* ret = new net_type();
-	deserialize("C:/Data/Dlib/mmod_human_face_detector.dat/mmod_human_face_detector.dat") >> (*ret);
+	deserialize(file_name) >> (*ret);
 	return ret;
 }
 

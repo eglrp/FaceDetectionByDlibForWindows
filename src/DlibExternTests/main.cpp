@@ -27,7 +27,7 @@ void test_dlibextern_dnn_mmod()
 	//dlib_pyramid_up_matrix_rgbpixel(image);
 
 	auto dets = vector_Rect_new1();
-	auto detector = dlib_dnn_mmod_face_detection_construct();
+	auto detector = dlib_dnn_mmod_face_detection_construct("../DlibSharp.Tests/data/mmod_human_face_detector.dat");
 	dlib_dnn_mmod_face_detection_operator(detector, image, dets);
 	long count = vector_Rect_getSize(dets);
 	if (count > 0)

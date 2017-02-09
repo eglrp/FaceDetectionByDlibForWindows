@@ -3,6 +3,7 @@
 
 #include "CommonSymbolsWithDlib.h"
 #include <dlib/geometry/rectangle.h>
+#include <dlib/dnn/cuda_dlib.h>
 
 // 以下の ifdef ブロックは DLL からのエクスポートを容易にするマクロを作成するための 
 // 一般的な方法です。この DLL 内のすべてのファイルは、コマンド ラインで定義された DLIBEXTERN_EXPORTS

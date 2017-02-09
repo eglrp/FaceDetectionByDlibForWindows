@@ -79,7 +79,7 @@ void dnn_mmod_face_detection_webcam() try
 	image_window win;
 
 	net_type net;
-	deserialize("C:/Data/Dlib/mmod_human_face_detector.dat/mmod_human_face_detector.dat") >> net;
+	deserialize("../DlibSharp.Tests/data/mmod_human_face_detector.dat") >> net;
 
 	cv::Mat temp;
 	cap >> temp;

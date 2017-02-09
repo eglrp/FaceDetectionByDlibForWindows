@@ -13,15 +13,22 @@
         public VideoCapture Capture { get; set; }
         public Mat SourceBgr { get; private set; }
         public Mat ResultBgr { get; private set; }
+
         public FaceDetectionContextDlibDnnMmod FaceDetectionContextDlibDnnMmod { get; private set; }
+        public FaceDetectionContextDlibHogSvm FaceDetectionContextDlibHogSvm { get; private set; }
+        public FaceDetectionContextCascadeClassifier FaceDetectionContextCascadeClassifier { get; private set; }
+
         Window resultWnd = null;
 
         public FaceDetectionContextModelsTest()
         {
-            FaceDetectionContextDlibDnnMmod = new FaceDetectionContextDlibDnnMmod();
-
             ResultBgr = new Mat();
-            resultWnd = new Window("Result");
+
+            FaceDetectionContextDlibDnnMmod = new FaceDetectionContextDlibDnnMmod();
+            FaceDetectionContextDlibHogSvm = new FaceDetectionContextDlibHogSvm();
+            FaceDetectionContextCascadeClassifier = new FaceDetectionContextCascadeClassifier("HaarCascade", new Scalar(0, 0, 255), "data/haarcascade_frontalface_alt.xml");
+
+            resultWnd = new Window("Result. # of CUDA Devices: " + DnnMmodFaceDetection.GetDevicesCount());
         }
 
         public void StartCameraCapture()
@@ -41,7 +48,7 @@
             SourceBgr = new Mat();
             try
             {
-                for (int i = 0; i < 100; i++)
+                while (true)
                 {
                     if (Capture.IsOpened() == false) { throw new Exception("capture.IsOpened() == false"); }
                     var retrievedMat = Capture.RetrieveMat();
@@ -56,10 +63,26 @@
                         break;
                     }
                     ResultBgr = SourceBgr.Clone();
+
                     FaceDetectionContextDlibDnnMmod.DetectFaces(SourceBgr);
+                    FaceDetectionContextDlibHogSvm.DetectFaces(SourceBgr);
+                    using (var sourceGray = SourceBgr.CvtColor(ColorConversionCodes.BGR2GRAY))
+                    {
+                        FaceDetectionContextCascadeClassifier.DetectFaces(sourceGray, 1.08, 5, new Size(25, 25));
+                    }
+
+                    FaceDetectionContextCascadeClassifier.DrawResultAsRectangle(ResultBgr);
+                    FaceDetectionContextDlibHogSvm.DrawResultAsRectangle(ResultBgr);
                     FaceDetectionContextDlibDnnMmod.DrawResultAsRectangle(ResultBgr);
+
+                    FaceDetectionContextDlibDnnMmod.DrawResultText(ResultBgr, new Point(20, 20));
+                    FaceDetectionContextDlibHogSvm.DrawResultText(ResultBgr, new Point(20, 40));
+                    FaceDetectionContextCascadeClassifier.DrawResultText(ResultBgr, new Point(20, 60));
+
                     resultWnd.ShowImage(ResultBgr);
-                    Cv2.WaitKey(1);
+
+                    var ch = Cv2.WaitKey(1);
+                    if (ch == 0x1b) { break; }
                 }
             }
             catch (Exception ex)

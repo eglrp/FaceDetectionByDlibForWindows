@@ -7,14 +7,14 @@
     using System.Threading.Tasks;
     using System.Diagnostics;
 
-    public class FaceDetectionContextDlibDnnMmod : FaceDetectionContextBase
+    public class FaceDetectionContextDlibHogSvm : FaceDetectionContextBase
     {
-        public DlibSharp.DnnMmodFaceDetection DlibDnnMmod { get; private set; }
+        public DlibSharp.FrontalFaceDetector DlibHogSvm { get; private set; }
 
-        public FaceDetectionContextDlibDnnMmod()
-            : base("DlibDnnMmod", new OpenCvSharp.Scalar(255, 255, 0))
+        public FaceDetectionContextDlibHogSvm()
+            : base("DlibHogSvm", new OpenCvSharp.Scalar(0, 255, 0))
         {
-            DlibDnnMmod = new DlibSharp.DnnMmodFaceDetection("./data/mmod_human_face_detector.dat");
+            DlibHogSvm = new DlibSharp.FrontalFaceDetector();
         }
 
         public void DetectFaces(OpenCvSharp.Mat inputColorImage)
@@ -23,7 +23,7 @@
             Trace.Assert(inputColorImage != null);
             Elapsed.Restart();
 
-            DetectedFaceRects = DlibDnnMmod.DetectFaces(inputColorImage);
+            DetectedFaceRects = DlibHogSvm.DetectFaces(inputColorImage);
 
             Elapsed.Stop();
             var fps = (1000.0 / (double)Elapsed.ElapsedMilliseconds);

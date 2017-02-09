@@ -19,6 +19,9 @@
         [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
         extern internal static IntPtr dlib_set_error_redirect([MarshalAs(UnmanagedType.FunctionPtr)] ErrorCallback callback);
 
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static int dlib_cuda_get_num_devices();
+
 
         [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
         extern internal static IntPtr dlib_get_frontal_face_detector();
@@ -65,7 +68,7 @@
 
 
         [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
-        extern internal static IntPtr dlib_dnn_mmod_face_detection_construct();
+        extern internal static IntPtr dlib_dnn_mmod_face_detection_construct(string mmodHumanFaceDetectorDataFilePath);
 
         [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
         extern internal static void dlib_dnn_mmod_face_detection_delete(IntPtr obj);

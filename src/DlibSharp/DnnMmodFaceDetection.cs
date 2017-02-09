@@ -12,13 +12,19 @@
         IntPtr image = IntPtr.Zero;
         IntPtr dets = IntPtr.Zero;
 
+        public static int GetDevicesCount() { return NativeMethods.dlib_cuda_get_num_devices(); }
+
         void ReleaseDetector() { if (image != IntPtr.Zero) { NativeMethods.dlib_matrix_rgbpixel_delete(image); image = IntPtr.Zero; } }
         void ReleaseImage() { if (detector != IntPtr.Zero) { NativeMethods.dlib_dnn_mmod_face_detection_delete(detector); detector = IntPtr.Zero; } }
         void ReleaseDets() { if (dets != IntPtr.Zero) { NativeMethods.vector_Rect_delete(dets); dets = IntPtr.Zero; } }
 
-        public DnnMmodFaceDetection()
+        public DnnMmodFaceDetection(string mmodHumanFaceDetectorDataFilePath)
         {
-            detector = NativeMethods.dlib_dnn_mmod_face_detection_construct();
+            if (System.IO.File.Exists(mmodHumanFaceDetectorDataFilePath) == false)
+            {
+                throw new System.IO.FileNotFoundException("The training data used to create the model is also available at " + Environment.NewLine + "http://dlib.net/files/data/dlib_face_detection_dataset-2016-09-30.tar.gz", mmodHumanFaceDetectorDataFilePath);
+            }
+            detector = NativeMethods.dlib_dnn_mmod_face_detection_construct(mmodHumanFaceDetectorDataFilePath);
             image = NativeMethods.dlib_matrix_rgbpixel_new();
         }
 
@@ -28,18 +34,8 @@
             byte[] imageBytes;
             try
             {
-                if (false)
-                {
-                    const string imagePath = "../../../../../ThirdParty/dlibsharp/src/DlibSharp.Tests/images/lenna.bmp";
-                    imageBytes = System.IO.File.ReadAllBytes(imagePath);
-                }
-                else
-                {
-                    imageBytes = inputImage.ToBytes(".bmp");
-                }
+                imageBytes = inputImage.ToBytes(".bmp");
                 NativeMethods.dlib_load_bmp_matrix_rgbpixel(image, imageBytes, new IntPtr(imageBytes.Length));
-
-                //NativeMethods.dlib_pyramid_up_array2d_uchar(image);
 
                 dets = NativeMethods.vector_Rect_new1();
                 NativeMethods.dlib_dnn_mmod_face_detection_operator(detector, image, dets);

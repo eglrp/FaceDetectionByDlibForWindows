@@ -60,7 +60,8 @@
         {
             if (IsEnabled == false) { return; }
             Trace.Assert(resultImage != null);
-            resultImage.PutText(Name, point, HersheyFonts.HersheyComplex, 0.5, ResultLineColor);
+            var fpsStr = FpsFiltered.ToString("G3");
+            resultImage.PutText(Name + ": FPS: " + fpsStr, point, HersheyFonts.HersheyComplex, 0.5, ResultLineColor);
         }
     }
 }
