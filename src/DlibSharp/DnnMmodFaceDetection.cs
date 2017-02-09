@@ -19,7 +19,7 @@
         public DnnMmodFaceDetection()
         {
             detector = NativeMethods.dlib_dnn_mmod_face_detection_construct();
-            image = NativeMethods.dlib_array2d_uchar_new();
+            image = NativeMethods.dlib_matrix_rgbpixel_new();
         }
 
         public OpenCvSharp.Rect[] DetectFaces(OpenCvSharp.Mat inputImage)
@@ -39,7 +39,7 @@
                 }
                 NativeMethods.dlib_load_bmp_matrix_rgbpixel(image, imageBytes, new IntPtr(imageBytes.Length));
 
-                NativeMethods.dlib_pyramid_up_matrix_rgbpixel(image);
+                //NativeMethods.dlib_pyramid_up_array2d_uchar(image);
 
                 dets = NativeMethods.vector_Rect_new1();
                 NativeMethods.dlib_dnn_mmod_face_detection_operator(detector, image, dets);
