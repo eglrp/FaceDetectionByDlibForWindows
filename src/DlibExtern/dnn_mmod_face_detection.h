@@ -4,7 +4,6 @@
 #include "CommonSymbolsWithDlib.h"
 #include "DlibExtern.h"
 
-#include <iostream>
 #include <dlib/dnn.h>
 #include <dlib/data_io.h>
 #include <dlib/image_processing.h>
@@ -37,7 +36,6 @@ EXTERN_API void dlib_dnn_mmod_face_detection_operator(net_type *obj, matrix<rgb_
 	try
 	{
 		auto dets = (*obj)(*image);
-
 		dst->resize(dets.size());
 		int i = 0;
 		for (auto&& d : dets) { (*dst)[i++] = Rect(d); }
