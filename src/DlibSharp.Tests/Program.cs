@@ -10,9 +10,21 @@
     {
         static void Main()
         {
+            Test02();
+        }
+
+        static void Test01()
+        {
             var test = new FaceDetector();
             test.RawApiFrontalFaceDetectorUsingMemoryInput();
             for (int i = 0; i < 10; i++) { test.RawApiDnnMmodDetectionUsingMemoryInput(); }
+        }
+
+        static void Test02()
+        {
+            var obj = new FaceDetectionContextModelsTest();
+            obj.StartCameraCapture();
+            obj.RepeatDetection();
         }
     }
 }
