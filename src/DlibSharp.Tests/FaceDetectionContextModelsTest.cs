@@ -28,7 +28,7 @@
             FaceDetectionContextDlibHogSvm = new FaceDetectionContextDlibHogSvm();
             FaceDetectionContextCascadeClassifier = new FaceDetectionContextCascadeClassifier("HaarCascade", new Scalar(127, 127, 127), "data/haarcascade_frontalface_alt.xml");
 
-            resultWnd = new Window("Result. # of CUDA Devices: " + DnnMmodFaceDetection.GetDevicesCount());
+            resultWnd = new Window("Result. # of Devices: " + DnnMmodFaceDetection.GetDevicesCount());
         }
 
         public void StartCameraCapture()

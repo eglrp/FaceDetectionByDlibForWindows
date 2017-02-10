@@ -13,8 +13,11 @@
     [SuppressUnmanagedCodeSecurity]
     internal static class NativeMethods
     {
-        private const string Dll = "DlibExtern";
-
+#if WIN64
+        const string Dll = @".\dll\x64\DlibExtern.dll";
+#else
+        const string Dll = @".\dll\x86\DlibExtern.dll";
+#endif
 
         [DllImport(Dll, CallingConvention = CallingConvention.Cdecl)]
         extern internal static IntPtr dlib_set_error_redirect([MarshalAs(UnmanagedType.FunctionPtr)] ErrorCallback callback);

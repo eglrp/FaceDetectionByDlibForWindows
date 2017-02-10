@@ -68,25 +68,25 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>..\..\ThirdParty\dlib;..\..\ThirdParty\opencv_x86\install\include;$(IncludePath)</IncludePath>
-    <OutDir>$(ProjectDir)bin\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)bin\$(PlatformTarget)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(PlatformTarget)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)bin\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)bin\$(PlatformTarget)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(PlatformTarget)\$(Configuration)\</IntDir>
     <IncludePath>..\..\ThirdParty\dlib;..\..\ThirdParty\opencv_x64\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>..\..\ThirdParty\dlib;$(IncludePath)</IncludePath>
-    <OutDir>$(ProjectDir)bin\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)bin\$(PlatformTarget)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(PlatformTarget)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(ProjectDir)bin\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)bin\$(PlatformTarget)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(PlatformTarget)\$(Configuration)\</IntDir>
     <IncludePath>..\..\ThirdParty\dlib;..\..\ThirdParty\opencv_x64\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -96,15 +96,17 @@
       <PreprocessorDefinitions>PLATFORM_IS_$(Platform);WIN32;_DEBUG;_WINDOWS;_USRDLL;DLIBEXTERN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(OutDir)\DlibExtern.dll" "$(ProjectDir)..\DlibSharp\DlibExtern.dll"
-copy "$(OutDir)\DlibExtern.pdb" "$(ProjectDir)..\DlibSharp\DlibExtern.pdb"</Command>
+      <Command>mkdir "$(ProjectDir)..\DlibSharp\dll\$(PlatformTarget)"
+copy "$(OutDir)DlibExtern.dll" "$(ProjectDir)..\DlibSharp\dll\$(PlatformTarget)"
+mkdir "$(ProjectDir)..\DlibExternTests\bin\$(PlatformTarget)\$(Configuration)"
+copy "$(OutDir)DlibExtern.dll" "$(ProjectDir)..\DlibExternTests\bin\$(PlatformTarget)\$(Configuration)"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -115,15 +117,17 @@ copy "$(OutDir)\DlibExtern.pdb" "$(ProjectDir)..\DlibSharp\DlibExtern.pdb"</Comm
       <PreprocessorDefinitions>PLATFORM_IS_$(Platform);_DEBUG;_WINDOWS;_USRDLL;DLIBEXTERN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(OutDir)\DlibExtern.dll" "$(ProjectDir)..\DlibSharp\DlibExtern.dll"
-copy "$(OutDir)\DlibExtern.pdb" "$(ProjectDir)..\DlibSharp\DlibExtern.pdb"</Command>
+      <Command>mkdir "$(ProjectDir)..\DlibSharp\dll\$(PlatformTarget)"
+copy "$(OutDir)DlibExtern.dll" "$(ProjectDir)..\DlibSharp\dll\$(PlatformTarget)"
+mkdir "$(ProjectDir)..\DlibExternTests\bin\$(PlatformTarget)\$(Configuration)"
+copy "$(OutDir)DlibExtern.dll" "$(ProjectDir)..\DlibExternTests\bin\$(PlatformTarget)\$(Configuration)"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -135,7 +139,6 @@ copy "$(OutDir)\DlibExtern.pdb" "$(ProjectDir)..\DlibSharp\DlibExtern.pdb"</Comm
       <PreprocessorDefinitions>PLATFORM_IS_$(Platform);WIN32;NDEBUG;_WINDOWS;_USRDLL;DLIBEXTERN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -144,7 +147,11 @@ copy "$(OutDir)\DlibExtern.pdb" "$(ProjectDir)..\DlibSharp\DlibExtern.pdb"</Comm
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(OutDir)\DlibExtern.dll" "$(ProjectDir)..\DlibSharp\DlibExtern.dll"</Command>
+      <Command>mkdir "$(ProjectDir)..\DlibSharp\dll\$(PlatformTarget)"
+copy "$(OutDir)DlibExtern.dll" "$(ProjectDir)..\DlibSharp\dll\$(PlatformTarget)"
+mkdir "$(ProjectDir)..\DlibExternTests\bin\$(PlatformTarget)\$(Configuration)"
+copy "$(OutDir)DlibExtern.dll" "$(ProjectDir)..\DlibExternTests\bin\$(PlatformTarget)\$(Configuration)"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -157,7 +164,6 @@ copy "$(OutDir)\DlibExtern.pdb" "$(ProjectDir)..\DlibSharp\DlibExtern.pdb"</Comm
       <PreprocessorDefinitions>PLATFORM_IS_$(Platform);NDEBUG;_WINDOWS;_USRDLL;DLIBEXTERN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -166,7 +172,11 @@ copy "$(OutDir)\DlibExtern.pdb" "$(ProjectDir)..\DlibSharp\DlibExtern.pdb"</Comm
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(OutDir)\DlibExtern.dll" "$(ProjectDir)..\DlibSharp\DlibExtern.dll"</Command>
+      <Command>mkdir "$(ProjectDir)..\DlibSharp\dll\$(PlatformTarget)"
+copy "$(OutDir)DlibExtern.dll" "$(ProjectDir)..\DlibSharp\dll\$(PlatformTarget)"
+mkdir "$(ProjectDir)..\DlibExternTests\bin\$(PlatformTarget)\$(Configuration)"
+copy "$(OutDir)DlibExtern.dll" "$(ProjectDir)..\DlibExternTests\bin\$(PlatformTarget)\$(Configuration)"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
