@@ -7,12 +7,12 @@
     using System.Threading.Tasks;
     using System.Diagnostics;
 
-    public class FaceDetectionContextDlibDnnMmod : FaceDetectionContextBase
+    public class FaceDetectionContextDlibDnnMmod : FaceDetectionContextBase, IDisposable
     {
         public DlibSharp.DnnMmodFaceDetection DlibDnnMmod { get; private set; }
 
         public FaceDetectionContextDlibDnnMmod()
-            : base("DlibDnnMmod", new OpenCvSharp.Scalar(255, 255, 0))
+            : base("DlibDnnMmod", new OpenCvSharp.Scalar(0, 0, 255))
         {
             DlibDnnMmod = new DlibSharp.DnnMmodFaceDetection("./data/mmod_human_face_detector.dat");
         }
@@ -29,5 +29,22 @@
             var fps = (1000.0 / (double)Elapsed.ElapsedMilliseconds);
             FpsFiltered = 0.7 * FpsFiltered + 0.3 * fps;
         }
+
+        #region IDisposable
+        private bool disposed = false;
+        public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed) { return; }
+            if (disposing)
+            {
+                // dispose managed objects, and dispose objects that implement IDisposable
+                if (DlibDnnMmod != null) { DlibDnnMmod.Dispose(); DlibDnnMmod = null; }
+            }
+            // release any unmanaged objects and set the object references to null
+            disposed = true;
+        }
+        ~FaceDetectionContextDlibDnnMmod() { Dispose(false); }
+        #endregion
     }
 }

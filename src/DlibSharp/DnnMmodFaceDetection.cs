@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Diagnostics;
 
     public class DnnMmodFaceDetection : IDisposable
     {
@@ -31,22 +32,19 @@
         public OpenCvSharp.Rect[] DetectFaces(OpenCvSharp.Mat inputImage)
         {
             OpenCvSharp.Rect[] ret = new OpenCvSharp.Rect[0];
-            byte[] imageBytes;
             try
             {
-                imageBytes = inputImage.ToBytes(".bmp");
+                byte[] imageBytes = inputImage.ToBytes(".bmp");
                 NativeMethods.dlib_load_bmp_matrix_rgbpixel(image, imageBytes, new IntPtr(imageBytes.Length));
 
                 dets = NativeMethods.vector_Rect_new1();
                 NativeMethods.dlib_dnn_mmod_face_detection_operator(detector, image, dets);
                 unsafe
                 {
+                    Trace.Assert(dets != null && dets != IntPtr.Zero);
                     long count = NativeMethods.vector_Rect_getSize(dets).ToInt64();
-                    if (count == 0)
-                    {
-                        // If it does not return ret here, exception occurs.
-                        return ret;
-                    }
+                    // If it does not return ret here, exception occurs.
+                    if (count == 0) { return ret; }
                     Rect* rectangles = (Rect*)NativeMethods.vector_Rect_getPointer(dets).ToPointer();
                     ret = new OpenCvSharp.Rect[count];
                     for (int i = 0; i < count; i++)
@@ -76,15 +74,12 @@
             if (disposing)
             {
                 // dispose managed objects, and dispose objects that implement IDisposable
-                //OnDisposing(EventArgs.Empty);
             }
             // release any unmanaged objects and set the object references to null
-            ReleaseDetector();
-            ReleaseImage();
             ReleaseDets();
-            if (dets != IntPtr.Zero) { NativeMethods.vector_Rect_delete(dets); dets = IntPtr.Zero; }
+            ReleaseImage();
+            ReleaseDetector();
             disposed = true;
-            //OnDisposed(EventArgs.Empty);
         }
         ~DnnMmodFaceDetection() { Dispose(false); }
         #endregion

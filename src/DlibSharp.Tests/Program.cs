@@ -22,9 +22,11 @@
 
         static void Test02()
         {
-            var obj = new FaceDetectionContextModelsTest();
-            obj.StartCameraCapture();
-            obj.RepeatDetection();
+            using (var obj = new FaceDetectionContextModelsTest())
+            {
+                obj.StartCameraCapture();
+                obj.RepeatDetection();
+            }
         }
     }
 }

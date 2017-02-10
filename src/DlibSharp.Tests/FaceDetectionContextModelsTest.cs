@@ -8,7 +8,7 @@
     using System.Diagnostics;
     using OpenCvSharp;
 
-    class FaceDetectionContextModelsTest
+    class FaceDetectionContextModelsTest : IDisposable
     {
         public VideoCapture Capture { get; set; }
         public Mat SourceBgr { get; private set; }
@@ -26,7 +26,7 @@
 
             FaceDetectionContextDlibDnnMmod = new FaceDetectionContextDlibDnnMmod();
             FaceDetectionContextDlibHogSvm = new FaceDetectionContextDlibHogSvm();
-            FaceDetectionContextCascadeClassifier = new FaceDetectionContextCascadeClassifier("HaarCascade", new Scalar(0, 0, 255), "data/haarcascade_frontalface_alt.xml");
+            FaceDetectionContextCascadeClassifier = new FaceDetectionContextCascadeClassifier("HaarCascade", new Scalar(127, 127, 127), "data/haarcascade_frontalface_alt.xml");
 
             resultWnd = new Window("Result. # of CUDA Devices: " + DnnMmodFaceDetection.GetDevicesCount());
         }
@@ -92,5 +92,23 @@
             }
             if (Capture != null) { Capture.Release(); Capture.Dispose(); Capture = null; }
         }
+
+        #region IDisposable
+        private bool disposed = false;
+        public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed) { return; }
+            if (disposing)
+            {
+                // dispose managed objects, and dispose objects that implement IDisposable
+                if (FaceDetectionContextDlibDnnMmod != null) { FaceDetectionContextDlibDnnMmod.Dispose(); FaceDetectionContextDlibDnnMmod = null; }
+                if (FaceDetectionContextDlibHogSvm != null) { FaceDetectionContextDlibHogSvm.Dispose(); FaceDetectionContextDlibHogSvm = null; }
+            }
+            // release any unmanaged objects and set the object references to null
+            disposed = true;
+        }
+        ~FaceDetectionContextModelsTest() { Dispose(false); }
+        #endregion
     }
 }
