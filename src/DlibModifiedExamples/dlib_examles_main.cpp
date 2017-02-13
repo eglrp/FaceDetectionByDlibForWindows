@@ -3,7 +3,7 @@
 #include "../DlibExtern/CommonSymbolsWithDlib.h"
 #include "../DlibExtern/LinkingLibrariesSettings.h"
 
-#pragma comment(lib, THIRDPARTY_ROOT_PATH DLIB_LIB_DIR_NAME "/dlib_build/" DEBUG_OR_RELEASE "/dlib.lib")
+#pragma comment(lib, THIRDPARTY_ROOT_PATH "DlibBuiltFilesOnWindows/" DLIB_LIB_DIR_NAME "/dlib_build/" DEBUG_OR_RELEASE "/dlib.lib")
 
 #ifdef _DEBUG
 #define OPENCV_LIB_EXT "d.lib"
@@ -11,20 +11,13 @@
 #define OPENCV_LIB_EXT ".lib"
 #endif
 
-//#pragma comment(lib, THIRDPARTY_ROOT_PATH "opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/staticlib/IlmImf" OPENCV_LIB_EXT)
-//#pragma comment(lib, THIRDPARTY_ROOT_PATH "opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/staticlib/libjasper" OPENCV_LIB_EXT)
-//#pragma comment(lib, THIRDPARTY_ROOT_PATH "opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/staticlib/libjpeg" OPENCV_LIB_EXT)
-//#pragma comment(lib, THIRDPARTY_ROOT_PATH "opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/staticlib/libpng" OPENCV_LIB_EXT)
-//#pragma comment(lib, THIRDPARTY_ROOT_PATH "opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/staticlib/libtiff" OPENCV_LIB_EXT)
-//#pragma comment(lib, THIRDPARTY_ROOT_PATH "opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/staticlib/libwebp" OPENCV_LIB_EXT)
-//#pragma comment(lib, THIRDPARTY_ROOT_PATH "opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/staticlib/zlib" OPENCV_LIB_EXT)
-#pragma comment(lib, THIRDPARTY_ROOT_PATH "opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/lib/opencv_core320" OPENCV_LIB_EXT)
-#pragma comment(lib, THIRDPARTY_ROOT_PATH "opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/lib/opencv_highgui320" OPENCV_LIB_EXT)
-#pragma comment(lib, THIRDPARTY_ROOT_PATH "opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/lib/opencv_imgcodecs320" OPENCV_LIB_EXT)
-#pragma comment(lib, THIRDPARTY_ROOT_PATH "opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/lib/opencv_imgproc320" OPENCV_LIB_EXT)
-#pragma comment(lib, THIRDPARTY_ROOT_PATH "opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/lib/opencv_superres320" OPENCV_LIB_EXT)
-#pragma comment(lib, THIRDPARTY_ROOT_PATH "opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/lib/opencv_video320" OPENCV_LIB_EXT)
-#pragma comment(lib, THIRDPARTY_ROOT_PATH "opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/lib/opencv_videoio320" OPENCV_LIB_EXT)
+#pragma comment(lib, THIRDPARTY_ROOT_PATH "DlibBuiltFilesOnWindows/OpenCVBuiltFilesOnWindows/opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/lib/opencv_core320" OPENCV_LIB_EXT)
+#pragma comment(lib, THIRDPARTY_ROOT_PATH "DlibBuiltFilesOnWindows/OpenCVBuiltFilesOnWindows/opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/lib/opencv_highgui320" OPENCV_LIB_EXT)
+#pragma comment(lib, THIRDPARTY_ROOT_PATH "DlibBuiltFilesOnWindows/OpenCVBuiltFilesOnWindows/opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/lib/opencv_imgcodecs320" OPENCV_LIB_EXT)
+#pragma comment(lib, THIRDPARTY_ROOT_PATH "DlibBuiltFilesOnWindows/OpenCVBuiltFilesOnWindows/opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/lib/opencv_imgproc320" OPENCV_LIB_EXT)
+#pragma comment(lib, THIRDPARTY_ROOT_PATH "DlibBuiltFilesOnWindows/OpenCVBuiltFilesOnWindows/opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/lib/opencv_superres320" OPENCV_LIB_EXT)
+#pragma comment(lib, THIRDPARTY_ROOT_PATH "DlibBuiltFilesOnWindows/OpenCVBuiltFilesOnWindows/opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/lib/opencv_video320" OPENCV_LIB_EXT)
+#pragma comment(lib, THIRDPARTY_ROOT_PATH "DlibBuiltFilesOnWindows/OpenCVBuiltFilesOnWindows/opencv_" X86_OR_X64 "/install/" X86_OR_X64 "/vc14/lib/opencv_videoio320" OPENCV_LIB_EXT)
 #pragma comment(lib, "vfw32.lib")
 
 //#include <iostream>
