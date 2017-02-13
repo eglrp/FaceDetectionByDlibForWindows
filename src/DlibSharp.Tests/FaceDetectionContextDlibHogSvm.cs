@@ -17,13 +17,13 @@
             DlibHogSvm = new DlibSharp.FrontalFaceDetector();
         }
 
-        public void DetectFaces(OpenCvSharp.Mat inputColorImage)
+        public void DetectFaces(OpenCvSharp.Mat inputColorImage, double threshold)
         {
             if (IsEnabled == false) { return; }
             Trace.Assert(inputColorImage != null);
             Elapsed.Restart();
 
-            DetectedFaceRects = DlibHogSvm.DetectFaces(inputColorImage);
+            DetectedFaceRects = DlibHogSvm.DetectFaces(inputColorImage, threshold);
 
             Elapsed.Stop();
             var fps = (1000.0 / (double)Elapsed.ElapsedMilliseconds);

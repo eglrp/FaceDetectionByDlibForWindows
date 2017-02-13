@@ -65,7 +65,7 @@
                     ResultBgr = SourceBgr.Clone();
 
                     FaceDetectionContextDlibDnnMmod.DetectFaces(SourceBgr);
-                    FaceDetectionContextDlibHogSvm.DetectFaces(SourceBgr);
+                    FaceDetectionContextDlibHogSvm.DetectFaces(SourceBgr, 0);
                     using (var sourceGray = SourceBgr.CvtColor(ColorConversionCodes.BGR2GRAY))
                     {
                         FaceDetectionContextCascadeClassifier.DetectFaces(sourceGray, 1.08, 5, new Size(25, 25));

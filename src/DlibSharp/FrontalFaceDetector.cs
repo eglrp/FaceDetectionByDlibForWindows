@@ -23,7 +23,7 @@
             image = NativeMethods.dlib_array2d_uchar_new();
         }
 
-        public OpenCvSharp.Rect[] DetectFaces(OpenCvSharp.Mat inputImage)
+        public OpenCvSharp.Rect[] DetectFaces(OpenCvSharp.Mat inputImage, double threshold)
         {
             OpenCvSharp.Rect[] ret = new OpenCvSharp.Rect[0];
             try
@@ -32,7 +32,7 @@
                 NativeMethods.dlib_load_bmp_array2d_uchar(image, imageBytes, new IntPtr(imageBytes.Length));
 
                 dets = NativeMethods.vector_Rect_new1();
-                NativeMethods.dlib_frontal_face_detector_operator(detector, image, 0, dets);
+                NativeMethods.dlib_frontal_face_detector_operator(detector, image, threshold, dets);
                 unsafe
                 {
                     Trace.Assert(dets != null && dets != IntPtr.Zero);
