@@ -2,9 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
     using System.Diagnostics;
 
     public class FrontalFaceDetector : IDisposable
@@ -23,13 +21,17 @@
             image = NativeMethods.dlib_array2d_uchar_new();
         }
 
-        public OpenCvSharp.Rect[] DetectFaces(OpenCvSharp.Mat inputImage, double threshold)
+        public System.Drawing.Rectangle[] DetectFaces(System.Drawing.Bitmap inputImage, double threshold)
         {
-            OpenCvSharp.Rect[] ret = new OpenCvSharp.Rect[0];
+            var ret = new System.Drawing.Rectangle[0];
             try
             {
-                byte[] imageBytes = inputImage.ToBytes(".bmp");
-                NativeMethods.dlib_load_bmp_array2d_uchar(image, imageBytes, new IntPtr(imageBytes.Length));
+                using (var stream = new System.IO.MemoryStream())
+                {
+                    inputImage.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+                    byte[] imageBytes = stream.ToArray();
+                    NativeMethods.dlib_load_bmp_array2d_uchar(image, imageBytes, new IntPtr(imageBytes.Length));
+                }
 
                 dets = NativeMethods.vector_Rect_new1();
                 NativeMethods.dlib_frontal_face_detector_operator(detector, image, threshold, dets);
@@ -40,17 +42,17 @@
                     // If it does not return ret here, exception occurs.
                     if (count == 0) { return ret; }
                     Rect* rectangles = (Rect*)NativeMethods.vector_Rect_getPointer(dets).ToPointer();
-                    ret = new OpenCvSharp.Rect[count];
+                    ret = new System.Drawing.Rectangle[count];
                     for (int i = 0; i < count; i++)
                     {
                         var src = rectangles[i];
-                        ret[i] = new OpenCvSharp.Rect(src.X, src.Y, src.Width, src.Height);
+                        ret[i] = new System.Drawing.Rectangle(src.X, src.Y, src.Width, src.Height);
                     }
                 }
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
             finally
             {

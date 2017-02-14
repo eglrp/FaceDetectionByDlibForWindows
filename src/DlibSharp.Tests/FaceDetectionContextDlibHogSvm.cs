@@ -6,6 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
     using System.Diagnostics;
+    using OpenCvSharp.Extensions;
 
     public class FaceDetectionContextDlibHogSvm : FaceDetectionContextBase, IDisposable
     {
@@ -23,7 +24,8 @@
             Trace.Assert(inputColorImage != null);
             Elapsed.Restart();
 
-            DetectedFaceRects = DlibHogSvm.DetectFaces(inputColorImage, threshold);
+            DetectedFaceRects = DlibHogSvm.DetectFaces(inputColorImage.ToBitmap(), threshold)
+                .Select(e => new OpenCvSharp.Rect(e.X, e.Y, e.Width, e.Height));
 
             Elapsed.Stop();
             var fps = (1000.0 / (double)Elapsed.ElapsedMilliseconds);

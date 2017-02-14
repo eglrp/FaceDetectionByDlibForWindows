@@ -11,7 +11,7 @@
         public string Name { get; set; }
         public Scalar ResultLineColor { get; set; }
         public bool IsEnabled { get; set; }
-        public IEnumerable<Rect> DetectedFaceRects { get; set; }
+        public IEnumerable<OpenCvSharp.Rect> DetectedFaceRects { get; set; }
         public Stopwatch Elapsed { get; set; }
         public double FpsFiltered { get; set; }
 
