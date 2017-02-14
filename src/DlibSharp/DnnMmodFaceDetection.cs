@@ -19,6 +19,10 @@
 
         public DnnMmodFaceDetection(string mmodHumanFaceDetectorDataFilePath)
         {
+            if (IntPtr.Size == 4)
+            {
+                throw new System.PlatformNotSupportedException("x64 CUDA and cuDNN 5.1 are necessary");
+            }
             if (System.IO.File.Exists(mmodHumanFaceDetectorDataFilePath) == false)
             {
                 throw new System.IO.FileNotFoundException("The training data used to create the model is also available at " + Environment.NewLine + "http://dlib.net/files/data/dlib_face_detection_dataset-2016-09-30.tar.gz", mmodHumanFaceDetectorDataFilePath);
