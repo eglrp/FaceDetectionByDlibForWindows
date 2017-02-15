@@ -1,4 +1,4 @@
-# FaceDetectionByDlibOnWindows
+# FaceDetectionByDlibForWindows
 An example program of face detection with .NET Framework wrapper of Dlib
 
 ## Requirement
@@ -7,7 +7,7 @@ An example program of face detection with .NET Framework wrapper of Dlib
 * cmake
 
 ## License
-Boost Software License - Version 1.0 (<https://github.com/kishimoto-exvision/FaceDetectionByDlibOnWindows/blob/master/LICENSE>)
+Boost Software License - Version 1.0 (<https://github.com/kishimoto-exvision/FaceDetectionByDlibForWindows/blob/master/LICENSE>)
 
 ## Third Party Libraries
 * Dlib <http://dlib.net/> (Boost Software License) (<https://github.com/davisking/dlib/blob/master/dlib/LICENSE.txt>)
