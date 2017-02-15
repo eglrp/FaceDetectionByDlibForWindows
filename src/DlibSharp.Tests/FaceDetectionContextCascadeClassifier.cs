@@ -23,7 +23,9 @@
             if (IsEnabled == false) { return; }
             Trace.Assert(inputGrayImage != null);
             Elapsed.Restart();
+
             DetectedFaceRects = HaarCascade.DetectMultiScale(inputGrayImage, scaleFactor, numberOfNeighbors, HaarDetectionType.ScaleImage, minSize);
+
             Elapsed.Stop();
             var fps = (1000.0 / (double)Elapsed.ElapsedMilliseconds);
             FpsFiltered = 0.7 * FpsFiltered + 0.3 * fps;

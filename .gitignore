@@ -250,9 +250,8 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
-/src/DlibSharp/DlibExtern.dll
-/ThirdParty/dlib_examples_build_x64_cuda
-/ThirdParty/dlib_examples_build_x86_avx
-/ThirdParty/dlib_examples_build_x86_mkl
-/ThirdParty/opencv_x86
-/ThirdParty/opencv_x64
+DlibBuiltFilesForWindows/dlib_examples_build_x64_cuda
+DlibBuiltFilesForWindows/dlib_examples_build_x86_avx
+DlibBuiltFilesForWindows/dlib_examples_build_x86_mkl
+DlibBuiltFilesForWindows/opencv_x86
+DlibBuiltFilesForWindows/opencv_x64

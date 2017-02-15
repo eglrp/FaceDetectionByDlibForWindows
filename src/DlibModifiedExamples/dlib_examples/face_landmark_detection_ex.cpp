@@ -56,9 +56,9 @@ void face_landmark_detection_ex_test()
 	int argc = 1;
 	char* argv[100];
 	argv[argc++] = "../DlibSharp.Tests/data/mmod_human_face_detector.dat";
-	argv[argc++] = THIRDPARTY_ROOT_PATH "dlib/examples/faces/2008_007676.jpg";
-	argv[argc++] = THIRDPARTY_ROOT_PATH "dlib/examples/faces/2007_007763.jpg";
-	argv[argc++] = THIRDPARTY_ROOT_PATH "dlib/examples/faces/2008_001009.jpg";
+	argv[argc++] = DlibBuiltFilesForWindows_ROOT_PATH "dlib/examples/faces/2008_007676.jpg";
+	argv[argc++] = DlibBuiltFilesForWindows_ROOT_PATH "dlib/examples/faces/2007_007763.jpg";
+	argv[argc++] = DlibBuiltFilesForWindows_ROOT_PATH "dlib/examples/faces/2008_001009.jpg";
 
 	try
 	{

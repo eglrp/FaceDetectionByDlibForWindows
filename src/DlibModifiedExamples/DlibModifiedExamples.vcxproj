@@ -82,25 +82,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\ThirdParty\DlibBuiltFilesForWindows\dlib;..\..\ThirdParty\DlibBuiltFilesForWindows\OpenCVBuiltFilesForWindows\opencv_x64\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>..\..\DlibBuiltFilesForWindows\dlib;..\..\DlibBuiltFilesForWindows\opencv_x64\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <OutDir>$(ProjectDir)bin\$(PlatformTarget)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(PlatformTarget)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\ThirdParty\DlibBuiltFilesForWindows\dlib;..\..\ThirdParty\DlibBuiltFilesForWindows\OpenCVBuiltFilesForWindows\opencv_x86\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>..\..\DlibBuiltFilesForWindows\dlib;..\..\DlibBuiltFilesForWindows\opencv_x86\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <OutDir>$(ProjectDir)bin\$(PlatformTarget)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(PlatformTarget)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\..\ThirdParty\DlibBuiltFilesForWindows\dlib;..\..\ThirdParty\DlibBuiltFilesForWindows\OpenCVBuiltFilesForWindows\opencv_x64\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>..\..\DlibBuiltFilesForWindows\dlib;..\..\DlibBuiltFilesForWindows\opencv_x64\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <OutDir>$(ProjectDir)bin\$(PlatformTarget)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(PlatformTarget)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\..\ThirdParty\DlibBuiltFilesForWindows\dlib;..\..\ThirdParty\DlibBuiltFilesForWindows\OpenCVBuiltFilesForWindows\opencv_x86\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>..\..\DlibBuiltFilesForWindows\dlib;..\..\DlibBuiltFilesForWindows\opencv_x86\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <OutDir>$(ProjectDir)bin\$(PlatformTarget)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(PlatformTarget)\$(Configuration)\</IntDir>
   </PropertyGroup>

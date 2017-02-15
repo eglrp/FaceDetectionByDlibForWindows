@@ -15,12 +15,18 @@
         public FaceDetectionContextDlibDnnMmod()
             : base("DlibDnnMmod", new OpenCvSharp.Scalar(0, 0, 255))
         {
-            DlibDnnMmod = new DlibSharp.DnnMmodFaceDetection("./data/mmod_human_face_detector.dat");
+            if (IntPtr.Size == 4)
+            {
+                System.Windows.MessageBox.Show("To use dlib DNN, x64 CUDA and cuDNN 5.1 are necessary");
+                IsEnabled = false;
+                return;
+            }
+            DlibDnnMmod = new DlibSharp.DnnMmodFaceDetection("./Data/mmod_human_face_detector.dat");
         }
 
         public void DetectFaces(OpenCvSharp.Mat inputColorImage)
         {
-            if (IsEnabled == false) { return; }
+            if (IsEnabled == false || DlibDnnMmod == null) { return; }
             Trace.Assert(inputColorImage != null);
             Elapsed.Restart();
 

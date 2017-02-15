@@ -28,7 +28,7 @@ try
 {
 	int argc = 1;
 	char* argv[100];
-	argv[argc++] = THIRDPARTY_ROOT_PATH "dlib/examples/video_frames";
+	argv[argc++] = DlibBuiltFilesForWindows_ROOT_PATH "dlib/examples/video_frames";
 
 	if (argc != 2)
     {

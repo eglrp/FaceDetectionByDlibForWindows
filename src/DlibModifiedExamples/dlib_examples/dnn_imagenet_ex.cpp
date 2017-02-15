@@ -115,9 +115,9 @@ void dnn_imagenet_ex_test() try
 	int argc = 1;
 	char* argv[100];
 	argv[argc++] = "C:/Data/Dlib/resnet34_1000_imagenet_classifier.dnn/resnet34_1000_imagenet_classifier.dnn";
-	argv[argc++] = THIRDPARTY_ROOT_PATH "dlib/examples/faces/2008_007676.jpg";
-	argv[argc++] = THIRDPARTY_ROOT_PATH "dlib/examples/faces/2007_007763.jpg";
-	argv[argc++] = THIRDPARTY_ROOT_PATH "dlib/examples/faces/2008_001009.jpg";
+	argv[argc++] = DlibBuiltFilesForWindows_ROOT_PATH "dlib/examples/faces/2008_007676.jpg";
+	argv[argc++] = DlibBuiltFilesForWindows_ROOT_PATH "dlib/examples/faces/2007_007763.jpg";
+	argv[argc++] = DlibBuiltFilesForWindows_ROOT_PATH "dlib/examples/faces/2008_001009.jpg";
 
     if (argc == 1)
     {

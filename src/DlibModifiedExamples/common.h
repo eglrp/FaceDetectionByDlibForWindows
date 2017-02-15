@@ -3,6 +3,6 @@
 
 #include "../DlibExtern/CommonSymbolsWithDlib.h"
 
-#define THIRDPARTY_ROOT_PATH  "../../ThirdParty/"
+#define DlibBuiltFilesForWindows_ROOT_PATH  "../../DlibBuiltFilesForWindows/"
 
 #endif
