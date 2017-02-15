@@ -4,3 +4,5 @@ downloaded from NVIDIA web site.
 https://developer.nvidia.com/cudnn
 
 There is not 32-bit or static link version of cuDNN.
+
+You can delete the references to these files on DlibSharp project's "Reference".
