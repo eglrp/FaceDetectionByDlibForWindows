@@ -18,7 +18,7 @@
         {
             Directory.SetCurrentDirectory(TestContext.CurrentContext.TestDirectory);
 
-            callback = delegate(string what) { throw new Exception(what); };
+            callback = delegate (string what) { throw new Exception(what); };
             NativeMethods.dlib_set_error_redirect(callback);
         }
 
@@ -114,6 +114,9 @@
         public void RawApiDnnMmodDetectionUsingMemoryInput()
         {
             const string imagePath = "images\\lenna.bmp";
+
+            if (IntPtr.Size == 4) { return; }
+
             var imageBytes = File.ReadAllBytes(imagePath);
 
             IntPtr detector = IntPtr.Zero;

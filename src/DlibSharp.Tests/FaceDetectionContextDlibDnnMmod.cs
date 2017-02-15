@@ -11,6 +11,7 @@
     public class FaceDetectionContextDlibDnnMmod : FaceDetectionContextBase, IDisposable
     {
         public DlibSharp.DnnMmodFaceDetection DlibDnnMmod { get; private set; }
+        public DlibSharp.MatrixRgbPixel Image { get; private set; }
 
         public FaceDetectionContextDlibDnnMmod()
             : base("DlibDnnMmod", new OpenCvSharp.Scalar(0, 0, 255))
@@ -22,6 +23,7 @@
                 return;
             }
             DlibDnnMmod = new DlibSharp.DnnMmodFaceDetection("./Data/mmod_human_face_detector.dat");
+            Image = new DlibSharp.MatrixRgbPixel();
         }
 
         public void DetectFaces(OpenCvSharp.Mat inputColorImage)
@@ -30,7 +32,8 @@
             Trace.Assert(inputColorImage != null);
             Elapsed.Restart();
 
-            DetectedFaceRects = DlibDnnMmod.DetectFaces(inputColorImage.ToBitmap())
+            Image.SetBitmap(inputColorImage.ToBitmap());
+            DetectedFaceRects = DlibDnnMmod.DetectFaces(Image)
                 .Select(e => new OpenCvSharp.Rect(e.X, e.Y, e.Width, e.Height));
 
             Elapsed.Stop();
@@ -48,6 +51,7 @@
             {
                 // dispose managed objects, and dispose objects that implement IDisposable
                 if (DlibDnnMmod != null) { DlibDnnMmod.Dispose(); DlibDnnMmod = null; }
+                if (Image != null) { Image.Dispose(); Image = null; }
             }
             // release any unmanaged objects and set the object references to null
             disposed = true;

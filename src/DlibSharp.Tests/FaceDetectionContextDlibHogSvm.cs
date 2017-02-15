@@ -11,11 +11,13 @@
     public class FaceDetectionContextDlibHogSvm : FaceDetectionContextBase, IDisposable
     {
         public DlibSharp.FrontalFaceDetector DlibHogSvm { get; private set; }
+        public DlibSharp.Array2dUchar Image { get; private set; }
 
         public FaceDetectionContextDlibHogSvm()
-            : base("DlibHogSvm", new OpenCvSharp.Scalar(0, 255, 0))
+                : base("DlibHogSvm", new OpenCvSharp.Scalar(0, 255, 0))
         {
             DlibHogSvm = new DlibSharp.FrontalFaceDetector();
+            Image = new DlibSharp.Array2dUchar();
         }
 
         public void DetectFaces(OpenCvSharp.Mat inputColorImage, double threshold)
@@ -24,7 +26,8 @@
             Trace.Assert(inputColorImage != null);
             Elapsed.Restart();
 
-            DetectedFaceRects = DlibHogSvm.DetectFaces(inputColorImage.ToBitmap(), threshold)
+            Image.SetBitmap(inputColorImage.ToBitmap());
+            DetectedFaceRects = DlibHogSvm.DetectFaces(Image, threshold)
                 .Select(e => new OpenCvSharp.Rect(e.X, e.Y, e.Width, e.Height));
 
             Elapsed.Stop();
@@ -42,6 +45,7 @@
             {
                 // dispose managed objects, and dispose objects that implement IDisposable
                 if (DlibHogSvm != null) { DlibHogSvm.Dispose(); DlibHogSvm = null; }
+                if (Image != null) { Image.Dispose(); Image = null; }
             }
             // release any unmanaged objects and set the object references to null
             disposed = true;

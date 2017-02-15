@@ -3,18 +3,18 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Runtime.InteropServices;
+    using System.Security;
     using System.Diagnostics;
 
     public class DnnMmodFaceDetection : IDisposable
     {
         IntPtr detector = IntPtr.Zero;
-        IntPtr image = IntPtr.Zero;
         IntPtr dets = IntPtr.Zero;
 
         public static int GetDevicesCount() { return NativeMethods.dlib_cuda_get_num_devices(); }
 
-        void ReleaseDetector() { if (image != IntPtr.Zero) { NativeMethods.dlib_matrix_rgbpixel_delete(image); image = IntPtr.Zero; } }
-        void ReleaseImage() { if (detector != IntPtr.Zero) { NativeMethods.dlib_dnn_mmod_face_detection_delete(detector); detector = IntPtr.Zero; } }
+        void ReleaseDetector() { if (detector != IntPtr.Zero) { NativeMethods.dlib_dnn_mmod_face_detection_delete(detector); detector = IntPtr.Zero; } }
         void ReleaseDets() { if (dets != IntPtr.Zero) { NativeMethods.vector_Rect_delete(dets); dets = IntPtr.Zero; } }
 
         public DnnMmodFaceDetection(string mmodHumanFaceDetectorDataFilePath)
@@ -28,23 +28,15 @@
                 throw new System.IO.FileNotFoundException("The training data used to create the model is also available at " + Environment.NewLine + "http://dlib.net/files/data/dlib_face_detection_dataset-2016-09-30.tar.gz", mmodHumanFaceDetectorDataFilePath);
             }
             detector = NativeMethods.dlib_dnn_mmod_face_detection_construct(mmodHumanFaceDetectorDataFilePath);
-            image = NativeMethods.dlib_matrix_rgbpixel_new();
         }
 
-        public System.Drawing.Rectangle[] DetectFaces(System.Drawing.Bitmap inputImage)
+        public System.Drawing.Rectangle[] DetectFaces(MatrixRgbPixel inputImage)
         {
             var ret = new System.Drawing.Rectangle[0];
             try
             {
-                using (var stream = new System.IO.MemoryStream())
-                {
-                    inputImage.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
-                    byte[] imageBytes = stream.ToArray();
-                    NativeMethods.dlib_load_bmp_matrix_rgbpixel(image, imageBytes, new IntPtr(imageBytes.Length));
-                }
-
                 dets = NativeMethods.vector_Rect_new1();
-                NativeMethods.dlib_dnn_mmod_face_detection_operator(detector, image, dets);
+                NativeMethods.dlib_dnn_mmod_face_detection_operator(detector, inputImage.ImageData, dets);
                 unsafe
                 {
                     Trace.Assert(dets != null && dets != IntPtr.Zero);
@@ -83,11 +75,23 @@
             }
             // release any unmanaged objects and set the object references to null
             ReleaseDets();
-            ReleaseImage();
             ReleaseDetector();
             disposed = true;
         }
         ~DnnMmodFaceDetection() { Dispose(false); }
         #endregion
+    }
+
+    [SuppressUnmanagedCodeSecurity]
+    internal static partial class NativeMethods
+    {
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static IntPtr dlib_dnn_mmod_face_detection_construct(string mmodHumanFaceDetectorDataFilePath);
+
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static void dlib_dnn_mmod_face_detection_delete(IntPtr obj);
+
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static void dlib_dnn_mmod_face_detection_operator(IntPtr obj, IntPtr image, IntPtr dst);
     }
 }

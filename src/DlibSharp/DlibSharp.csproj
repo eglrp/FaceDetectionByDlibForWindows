@@ -82,6 +82,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MatrixRgbPixel.cs" />
+    <Compile Include="Array2dUchar.cs" />
     <Compile Include="ErrorCallback.cs" />
     <Compile Include="DnnMmodFaceDetection.cs" />
     <Compile Include="FrontalFaceDetector.cs" />
