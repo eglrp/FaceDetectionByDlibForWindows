@@ -33,7 +33,7 @@ EXTERN_API net_type* dlib_dnn_mmod_face_detection_construct(const char *file_nam
 
 EXTERN_API void dlib_dnn_mmod_face_detection_delete(net_type *obj)
 {
-	if (obj != nullptr) { delete obj; obj = nullptr; }
+	delete obj;
 }
 
 EXTERN_API void dlib_dnn_mmod_face_detection_operator(net_type *obj, matrix<rgb_pixel> *image, std::vector<Rect> *dst)

@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dlib_examles_main.cpp" />
     <ClCompile Include="dlib_examples\3d_point_cloud_ex.cpp" />
     <ClCompile Include="dlib_examples\dnn_imagenet_ex.cpp" />
     <ClCompile Include="dlib_examples\dnn_mmod_face_detection_ex.cpp" />
@@ -28,6 +27,7 @@
     <ClCompile Include="dlib_examples\face_landmark_detection_ex.cpp" />
     <ClCompile Include="dlib_examples\video_tracking_ex.cpp" />
     <ClCompile Include="dlib_examples\webcam_face_pose_ex.cpp" />
+    <ClCompile Include="dlib_examles_main.cpp" />
     <ClCompile Include="webcam_dnn_mmod_face_detection.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -82,25 +82,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\ThirdParty\DlibBuiltFilesOnWindows\dlib;..\..\ThirdParty\DlibBuiltFilesOnWindows\OpenCVBuiltFilesOnWindows\opencv_x64\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>..\..\ThirdParty\DlibBuiltFilesForWindows\dlib;..\..\ThirdParty\DlibBuiltFilesForWindows\OpenCVBuiltFilesForWindows\opencv_x64\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <OutDir>$(ProjectDir)bin\$(PlatformTarget)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(PlatformTarget)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\ThirdParty\DlibBuiltFilesOnWindows\dlib;..\..\ThirdParty\DlibBuiltFilesOnWindows\OpenCVBuiltFilesOnWindows\opencv_x86\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>..\..\ThirdParty\DlibBuiltFilesForWindows\dlib;..\..\ThirdParty\DlibBuiltFilesForWindows\OpenCVBuiltFilesForWindows\opencv_x86\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <OutDir>$(ProjectDir)bin\$(PlatformTarget)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(PlatformTarget)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\..\ThirdParty\DlibBuiltFilesOnWindows\dlib;..\..\ThirdParty\DlibBuiltFilesOnWindows\OpenCVBuiltFilesOnWindows\opencv_x64\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>..\..\ThirdParty\DlibBuiltFilesForWindows\dlib;..\..\ThirdParty\DlibBuiltFilesForWindows\OpenCVBuiltFilesForWindows\opencv_x64\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <OutDir>$(ProjectDir)bin\$(PlatformTarget)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(PlatformTarget)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\..\ThirdParty\DlibBuiltFilesOnWindows\dlib;..\..\ThirdParty\DlibBuiltFilesOnWindows\OpenCVBuiltFilesOnWindows\opencv_x86\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>..\..\ThirdParty\DlibBuiltFilesForWindows\dlib;..\..\ThirdParty\DlibBuiltFilesForWindows\OpenCVBuiltFilesForWindows\opencv_x86\install\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <OutDir>$(ProjectDir)bin\$(PlatformTarget)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(PlatformTarget)\$(Configuration)\</IntDir>
   </PropertyGroup>
