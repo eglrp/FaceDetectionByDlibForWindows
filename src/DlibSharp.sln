@@ -12,8 +12,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DlibSharp.Tests", "DlibShar
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DlibExternTests", "DlibExternTests\DlibExternTests.vcxproj", "{C57091F9-04AD-4FF1-BA90-D62C31E5E812}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DlibModifiedExamples", "DlibModifiedExamples\DlibModifiedExamples.vcxproj", "{9D281011-470A-4507-8D17-A406C212AEB7}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DlibExtern", "DlibExtern\DlibExtern.vcxproj", "{9362E93D-16B9-42AB-B9FD-D825D183975E}"
 EndProject
 Global
@@ -48,14 +46,6 @@ Global
 		{C57091F9-04AD-4FF1-BA90-D62C31E5E812}.Release|x64.Build.0 = Release|x64
 		{C57091F9-04AD-4FF1-BA90-D62C31E5E812}.Release|x86.ActiveCfg = Release|Win32
 		{C57091F9-04AD-4FF1-BA90-D62C31E5E812}.Release|x86.Build.0 = Release|Win32
-		{9D281011-470A-4507-8D17-A406C212AEB7}.Debug|x64.ActiveCfg = Debug|x64
-		{9D281011-470A-4507-8D17-A406C212AEB7}.Debug|x64.Build.0 = Debug|x64
-		{9D281011-470A-4507-8D17-A406C212AEB7}.Debug|x86.ActiveCfg = Debug|Win32
-		{9D281011-470A-4507-8D17-A406C212AEB7}.Debug|x86.Build.0 = Debug|Win32
-		{9D281011-470A-4507-8D17-A406C212AEB7}.Release|x64.ActiveCfg = Release|x64
-		{9D281011-470A-4507-8D17-A406C212AEB7}.Release|x64.Build.0 = Release|x64
-		{9D281011-470A-4507-8D17-A406C212AEB7}.Release|x86.ActiveCfg = Release|Win32
-		{9D281011-470A-4507-8D17-A406C212AEB7}.Release|x86.Build.0 = Release|Win32
 		{9362E93D-16B9-42AB-B9FD-D825D183975E}.Debug|x64.ActiveCfg = Debug|x64
 		{9362E93D-16B9-42AB-B9FD-D825D183975E}.Debug|x64.Build.0 = Debug|x64
 		{9362E93D-16B9-42AB-B9FD-D825D183975E}.Debug|x86.ActiveCfg = Debug|Win32
