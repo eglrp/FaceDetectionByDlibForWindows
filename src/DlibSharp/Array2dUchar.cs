@@ -9,12 +9,15 @@
 
     public class Array2dUchar : IDisposable
     {
-        internal IntPtr ImageData { get; private set; }
+        internal IntPtr DlibArray2dUchar { get; private set; }
 
         public Array2dUchar()
         {
-            ImageData = NativeMethods.dlib_array2d_uchar_new();
+            DlibArray2dUchar = NativeMethods.dlib_array2d_uchar_new();
         }
+
+        public Int32 Width { get { return NativeMethods.dlib_array2d_uchar_nc(DlibArray2dUchar); } }
+        public Int32 Height { get { return NativeMethods.dlib_array2d_uchar_nr(DlibArray2dUchar); } }
 
         public void SetBitmap(System.Drawing.Bitmap inputImage)
         {
@@ -22,14 +25,14 @@
             {
                 inputImage.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
                 byte[] imageBytes = stream.ToArray();
-                NativeMethods.dlib_load_bmp_array2d_uchar(ImageData, imageBytes, new IntPtr(imageBytes.Length));
+                NativeMethods.dlib_load_bmp_array2d_uchar(DlibArray2dUchar, imageBytes, new IntPtr(imageBytes.Length));
             }
         }
 
         public void PyramidUp()
         {
-            Trace.Assert(ImageData != IntPtr.Zero);
-            NativeMethods.dlib_pyramid_up_array2d_uchar(ImageData);
+            Trace.Assert(DlibArray2dUchar != IntPtr.Zero);
+            NativeMethods.dlib_pyramid_up_array2d_uchar(DlibArray2dUchar);
         }
 
         #region IDisposable
@@ -43,7 +46,7 @@
                 // dispose managed objects, and dispose objects that implement IDisposable
             }
             // release any unmanaged objects and set the object references to null
-            if (ImageData != IntPtr.Zero) { NativeMethods.dlib_array2d_uchar_delete(ImageData); ImageData = IntPtr.Zero; }
+            if (DlibArray2dUchar != IntPtr.Zero) { NativeMethods.dlib_array2d_uchar_delete(DlibArray2dUchar); DlibArray2dUchar = IntPtr.Zero; }
             disposed = true;
         }
         ~Array2dUchar() { Dispose(false); }
@@ -58,6 +61,12 @@
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
         extern internal static void dlib_array2d_uchar_delete(IntPtr obj);
+
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static Int32 dlib_array2d_uchar_nr(IntPtr obj);
+
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static Int32 dlib_array2d_uchar_nc(IntPtr obj);
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
         extern internal static void dlib_load_image_array2d_uchar(IntPtr obj, string file_name);

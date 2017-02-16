@@ -10,14 +10,14 @@
     {
         static void Main()
         {
-            Test02();
+            Test03();
         }
 
-        static void Test01()
+        static void Test03()
         {
             var test = new FaceDetector();
-            test.RawApiFrontalFaceDetectorUsingMemoryInput();
-            for (int i = 0; i < 10; i++) { test.RawApiDnnMmodDetectionUsingMemoryInput(); }
+            test.TestFrontalFaceDetector();
+            test.TestDnnMmodFaceDetection();
         }
 
         static void Test02()
@@ -27,6 +27,13 @@
                 obj.StartCameraCapture();
                 obj.RepeatDetection();
             }
+        }
+
+        static void Test01()
+        {
+            var test = new FaceDetector();
+            test.RawApiFrontalFaceDetectorUsingMemoryInput();
+            for (int i = 0; i < 10; i++) { test.RawApiDnnMmodDetectionUsingMemoryInput(); }
         }
     }
 }

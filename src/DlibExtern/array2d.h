@@ -5,6 +5,7 @@
 #include "DlibExtern.h"
 #include <dlib/image_io.h>
 #include <dlib/image_transforms/interpolation.h>
+#include <stdint.h>
 
 EXTERN_API dlib::array2d<uchar> *dlib_array2d_uchar_new()
 {
@@ -14,6 +15,16 @@ EXTERN_API dlib::array2d<uchar> *dlib_array2d_uchar_new()
 EXTERN_API void dlib_array2d_uchar_delete(dlib::array2d<uchar> *obj)
 {
     delete obj;
+}
+
+EXTERN_API int32_t dlib_array2d_uchar_nr(dlib::array2d<uchar> *obj)
+{
+    return (int32_t)(obj->nr());
+}
+
+EXTERN_API int32_t dlib_array2d_uchar_nc(dlib::array2d<uchar> *obj)
+{
+    return (int32_t)(obj->nc());
 }
 
 EXTERN_API void dlib_load_image_array2d_uchar(dlib::array2d<uchar> *obj, const char *file_name)

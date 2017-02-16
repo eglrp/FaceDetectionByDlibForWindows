@@ -9,12 +9,15 @@
 
     public class MatrixRgbPixel : IDisposable
     {
-        internal IntPtr ImageData { get; private set; }
+        internal IntPtr DlibMatrixRgbPixel { get; private set; }
 
         public MatrixRgbPixel()
         {
-            ImageData = NativeMethods.dlib_matrix_rgbpixel_new();
+            DlibMatrixRgbPixel = NativeMethods.dlib_matrix_rgbpixel_new();
         }
+
+        public Int32 Width { get { return NativeMethods.dlib_matrix_rgbpixel_nc(DlibMatrixRgbPixel); } }
+        public Int32 Height { get { return NativeMethods.dlib_matrix_rgbpixel_nr(DlibMatrixRgbPixel); } }
 
         public void SetBitmap(System.Drawing.Bitmap inputImage)
         {
@@ -22,14 +25,14 @@
             {
                 inputImage.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
                 byte[] imageBytes = stream.ToArray();
-                NativeMethods.dlib_load_bmp_matrix_rgbpixel(ImageData, imageBytes, new IntPtr(imageBytes.Length));
+                NativeMethods.dlib_load_bmp_matrix_rgbpixel(DlibMatrixRgbPixel, imageBytes, new IntPtr(imageBytes.Length));
             }
         }
 
         public void PyramidUp()
         {
-            Trace.Assert(ImageData != IntPtr.Zero);
-            NativeMethods.dlib_pyramid_up_matrix_rgbpixel(ImageData);
+            Trace.Assert(DlibMatrixRgbPixel != IntPtr.Zero);
+            NativeMethods.dlib_pyramid_up_matrix_rgbpixel(DlibMatrixRgbPixel);
         }
 
         #region IDisposable
@@ -43,7 +46,7 @@
                 // dispose managed objects, and dispose objects that implement IDisposable
             }
             // release any unmanaged objects and set the object references to null
-            if (ImageData != IntPtr.Zero) { NativeMethods.dlib_matrix_rgbpixel_delete(ImageData); ImageData = IntPtr.Zero; }
+            if (DlibMatrixRgbPixel != IntPtr.Zero) { NativeMethods.dlib_matrix_rgbpixel_delete(DlibMatrixRgbPixel); DlibMatrixRgbPixel = IntPtr.Zero; }
             disposed = true;
         }
         ~MatrixRgbPixel() { Dispose(false); }
@@ -58,6 +61,12 @@
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
         extern internal static void dlib_matrix_rgbpixel_delete(IntPtr obj);
+
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static Int32 dlib_matrix_rgbpixel_nr(IntPtr obj);
+
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static Int32 dlib_matrix_rgbpixel_nc(IntPtr obj);
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
         extern internal static void dlib_load_image_matrix_rgbpixel(IntPtr obj, string file_name);

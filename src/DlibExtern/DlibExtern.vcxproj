@@ -185,6 +185,7 @@ copy "$(OutDir)DlibExtern.dll" "$(ProjectDir)..\DlibExternTests\bin\$(PlatformTa
     <ClInclude Include="dnn_mmod_face_detection.h" />
     <ClInclude Include="frontal_face_detector.h" />
     <ClInclude Include="CommonSymbolsWithDlib.h" />
+    <ClInclude Include="image_window.h" />
     <ClInclude Include="matrix_rgbpixel.h" />
     <ClInclude Include="std_vector.h" />
     <ClInclude Include="targetver.h" />
@@ -194,6 +195,7 @@ copy "$(OutDir)DlibExtern.dll" "$(ProjectDir)..\DlibExternTests\bin\$(PlatformTa
     <ClCompile Include="DlibExtern.cpp" />
     <ClCompile Include="dnn_mmod_face_detection.cpp" />
     <ClCompile Include="frontal_face_detector.cpp" />
+    <ClCompile Include="image_window.cpp" />
     <ClCompile Include="LinkingLibrariesSettings.h" />
     <ClCompile Include="matrix_rgbpixel.cpp" />
     <ClCompile Include="std_vector.cpp" />

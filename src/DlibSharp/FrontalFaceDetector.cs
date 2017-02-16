@@ -26,7 +26,7 @@
             try
             {
                 dets = NativeMethods.vector_Rect_new1();
-                NativeMethods.dlib_frontal_face_detector_operator(detector, array2dUchar.ImageData, threshold, dets);
+                NativeMethods.dlib_frontal_face_detector_operator(detector, array2dUchar.DlibArray2dUchar, threshold, dets);
                 unsafe
                 {
                     Trace.Assert(dets != null && dets != IntPtr.Zero);

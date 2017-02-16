@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImageWindow.cs" />
     <Compile Include="MatrixRgbPixel.cs" />
     <Compile Include="Array2dUchar.cs" />
     <Compile Include="ErrorCallback.cs" />

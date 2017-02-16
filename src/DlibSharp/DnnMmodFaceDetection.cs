@@ -36,7 +36,7 @@
             try
             {
                 dets = NativeMethods.vector_Rect_new1();
-                NativeMethods.dlib_dnn_mmod_face_detection_operator(detector, inputImage.ImageData, dets);
+                NativeMethods.dlib_dnn_mmod_face_detection_operator(detector, inputImage.DlibMatrixRgbPixel, dets);
                 unsafe
                 {
                     Trace.Assert(dets != null && dets != IntPtr.Zero);
