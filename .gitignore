@@ -15,8 +15,6 @@
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
-x64/
-x86/
 bld/
 [Bb]in/
 [Oo]bj/
@@ -255,3 +253,6 @@ DlibBuiltFilesForWindows/dlib_examples_build_x86_avx
 DlibBuiltFilesForWindows/dlib_examples_build_x86_mkl
 DlibBuiltFilesForWindows/opencv_x86
 DlibBuiltFilesForWindows/opencv_x64
+/Projects/DlibSharp/dll/x64/cublas64_80.dll
+/Projects/DlibSharp/dll/x64/cudnn64_5.dll
+/Projects/DlibSharp/dll/x64/curand64_80.dll
