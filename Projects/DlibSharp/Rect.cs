@@ -16,7 +16,7 @@
 
         public override string ToString()
         {
-            return $"(X:{X} Y:{Y} W:{Width} H:{Height})";
+            return string.Format("(X:{0} Y:{1} W:{2} H:{3})", X, Y, Width, Height);
         }
     }
 
