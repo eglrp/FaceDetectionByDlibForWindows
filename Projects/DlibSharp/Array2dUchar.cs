@@ -53,7 +53,7 @@
             Trace.Assert(src != null && dest != null);
             Trace.Assert(src.DlibArray2dUchar != IntPtr.Zero);
             Trace.Assert(dest.DlibArray2dUchar != IntPtr.Zero);
-            NativeMethods.dlib_resize_image_array2d_uchar_src_dest_interporation_kind(src.DlibArray2dUchar, dest.DlibArray2dUchar, kind);
+            NativeMethods.dlib_resize_image_array2d_uchar_src_dest_interporation_kind(src.DlibArray2dUchar, dest.DlibArray2dUchar, (int)kind);
         }
 
         public void ResizeImage(int width, int height)
@@ -113,7 +113,7 @@
         extern internal static void dlib_pyramid_up_array2d_uchar(IntPtr obj);
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
-        extern internal static void dlib_resize_image_array2d_uchar_src_dest_interporation_kind(IntPtr src, IntPtr dest, ResizeImageInterporateKind interporation_kind);
+        extern internal static void dlib_resize_image_array2d_uchar_src_dest_interporation_kind(IntPtr src, IntPtr dest, int interporation_kind);
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
         extern internal static void dlib_resize_image_array2d_uchar_width_height(ref IntPtr src, int width, int height);
