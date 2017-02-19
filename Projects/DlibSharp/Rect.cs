@@ -20,6 +20,14 @@
         }
     }
 
+    public enum ResizeImageInterporateKind
+    {
+        None = 0,
+        NearestNeighbor = 1,
+        Bilinear = 2,
+        Quadratic = 3
+    }
+
     [SuppressUnmanagedCodeSecurity]
     internal static partial class NativeMethods
     {

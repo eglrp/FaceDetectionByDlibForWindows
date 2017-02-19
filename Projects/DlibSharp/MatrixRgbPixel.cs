@@ -9,11 +9,24 @@
 
     public class MatrixRgbPixel : IDisposable
     {
-        internal IntPtr DlibMatrixRgbPixel { get; private set; }
+        internal IntPtr DlibMatrixRgbPixel;
 
         public MatrixRgbPixel()
         {
             DlibMatrixRgbPixel = NativeMethods.dlib_matrix_rgbpixel_new();
+        }
+
+        public MatrixRgbPixel(int width, int height)
+        {
+            Trace.Assert(width > 0 && height > 0);
+            DlibMatrixRgbPixel = NativeMethods.dlib_matrix_rgbpixel_new_width_height(width, height);
+        }
+
+        public MatrixRgbPixel(MatrixRgbPixel copyingSource)
+        {
+            Trace.Assert(copyingSource != null);
+            Trace.Assert(copyingSource.DlibMatrixRgbPixel != IntPtr.Zero);
+            DlibMatrixRgbPixel = NativeMethods.dlib_matrix_rgbpixel_new_copied(copyingSource.DlibMatrixRgbPixel);
         }
 
         public Int32 Width { get { return NativeMethods.dlib_matrix_rgbpixel_nc(DlibMatrixRgbPixel); } }
@@ -33,6 +46,20 @@
         {
             Trace.Assert(DlibMatrixRgbPixel != IntPtr.Zero);
             NativeMethods.dlib_pyramid_up_matrix_rgbpixel(DlibMatrixRgbPixel);
+        }
+
+        public static void ResizeImageWithResizeImageInterporateKind(MatrixRgbPixel src, MatrixRgbPixel dest, ResizeImageInterporateKind kind)
+        {
+            Trace.Assert(src != null && dest != null);
+            Trace.Assert(src.DlibMatrixRgbPixel != IntPtr.Zero);
+            Trace.Assert(dest.DlibMatrixRgbPixel != IntPtr.Zero);
+            NativeMethods.dlib_resize_image_matrix_rgbpixel_src_dest_interporation_kind(src.DlibMatrixRgbPixel, dest.DlibMatrixRgbPixel, kind);
+        }
+
+        public void ResizeImage(int width, int height)
+        {
+            Trace.Assert(DlibMatrixRgbPixel != IntPtr.Zero);
+            NativeMethods.dlib_resize_image_matrix_rgbpixel_width_height(ref DlibMatrixRgbPixel, width, height);
         }
 
         #region IDisposable
@@ -60,6 +87,12 @@
         extern internal static IntPtr dlib_matrix_rgbpixel_new();
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static IntPtr dlib_matrix_rgbpixel_new_width_height(int width, int height);
+
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static IntPtr dlib_matrix_rgbpixel_new_copied(IntPtr obj);
+
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
         extern internal static void dlib_matrix_rgbpixel_delete(IntPtr obj);
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
@@ -76,5 +109,11 @@
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
         extern internal static void dlib_pyramid_up_matrix_rgbpixel(IntPtr obj);
+
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static void dlib_resize_image_matrix_rgbpixel_src_dest_interporation_kind(IntPtr src, IntPtr dest, ResizeImageInterporateKind interporation_kind);
+
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static void dlib_resize_image_matrix_rgbpixel_width_height(ref IntPtr src, int width, int height);
     }
 }

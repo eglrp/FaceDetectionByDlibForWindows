@@ -9,7 +9,7 @@
 
     public class ImageWindow : IDisposable
     {
-        internal IntPtr DlibImageWindow { get; private set; }
+        internal IntPtr DlibImageWindow;
 
         public ImageWindow()
         {

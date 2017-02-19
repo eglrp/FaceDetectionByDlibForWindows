@@ -9,11 +9,24 @@
 
     public class Array2dUchar : IDisposable
     {
-        internal IntPtr DlibArray2dUchar { get; private set; }
+        internal IntPtr DlibArray2dUchar;
 
         public Array2dUchar()
         {
             DlibArray2dUchar = NativeMethods.dlib_array2d_uchar_new();
+        }
+
+        public Array2dUchar(int width, int height)
+        {
+            Trace.Assert(width > 0 && height > 0);
+            DlibArray2dUchar = NativeMethods.dlib_array2d_uchar_new_width_height(width, height);
+        }
+
+        public Array2dUchar(Array2dUchar copyingSource)
+        {
+            Trace.Assert(copyingSource != null);
+            Trace.Assert(copyingSource.DlibArray2dUchar != IntPtr.Zero);
+            DlibArray2dUchar = NativeMethods.dlib_array2d_uchar_new_copied(copyingSource.DlibArray2dUchar);
         }
 
         public Int32 Width { get { return NativeMethods.dlib_array2d_uchar_nc(DlibArray2dUchar); } }
@@ -35,6 +48,20 @@
             NativeMethods.dlib_pyramid_up_array2d_uchar(DlibArray2dUchar);
         }
 
+        public static void ResizeImageWithResizeImageInterporateKind(Array2dUchar src, Array2dUchar dest, ResizeImageInterporateKind kind)
+        {
+            Trace.Assert(src != null && dest != null);
+            Trace.Assert(src.DlibArray2dUchar != IntPtr.Zero);
+            Trace.Assert(dest.DlibArray2dUchar != IntPtr.Zero);
+            NativeMethods.dlib_resize_image_array2d_uchar_src_dest_interporation_kind(src.DlibArray2dUchar, dest.DlibArray2dUchar, kind);
+        }
+
+        public void ResizeImage(int width, int height)
+        {
+            Trace.Assert(DlibArray2dUchar != IntPtr.Zero);
+            NativeMethods.dlib_resize_image_array2d_uchar_width_height(ref DlibArray2dUchar, width, height);
+        }
+
         #region IDisposable
         private bool disposed = false;
         public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }
@@ -53,11 +80,19 @@
         #endregion
     }
 
+
+
     [SuppressUnmanagedCodeSecurity]
     internal static partial class NativeMethods
     {
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
         extern internal static IntPtr dlib_array2d_uchar_new();
+
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static IntPtr dlib_array2d_uchar_new_width_height(int width, int height);
+
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static IntPtr dlib_array2d_uchar_new_copied(IntPtr obj);
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
         extern internal static void dlib_array2d_uchar_delete(IntPtr obj);
@@ -76,5 +111,11 @@
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
         extern internal static void dlib_pyramid_up_array2d_uchar(IntPtr obj);
+
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static void dlib_resize_image_array2d_uchar_src_dest_interporation_kind(IntPtr src, IntPtr dest, ResizeImageInterporateKind interporation_kind);
+
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static void dlib_resize_image_array2d_uchar_width_height(ref IntPtr src, int width, int height);
     }
 }
