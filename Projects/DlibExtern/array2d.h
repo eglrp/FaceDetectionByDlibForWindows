@@ -77,7 +77,7 @@ EXTERN_API void dlib_pyramid_up_array2d_uchar(dlib::array2d<uchar> *obj)
     }
 }
 
-EXTERN_API void dlib_resize_image_array2d_uchar_src_dest_interporation_kind(dlib::array2d<uchar> *src, dlib::array2d<uchar> *dest, ResizeImageInterporateKind interporation_kind)
+EXTERN_API void dlib_resize_image_array2d_uchar_src_dest_interporation_kind(dlib::array2d<uchar> *src, dlib::array2d<uchar> *dest, int32_t interporation_kind)
 {
     try
     {

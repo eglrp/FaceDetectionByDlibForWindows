@@ -77,7 +77,7 @@ EXTERN_API void dlib_pyramid_up_matrix_rgbpixel(dlib::matrix<dlib::rgb_pixel> *o
     }
 }
 
-EXTERN_API void dlib_resize_image_matrix_rgbpixel_src_dest_interporation_kind(dlib::matrix<dlib::rgb_pixel> *src, dlib::matrix<dlib::rgb_pixel> *dest, ResizeImageInterporateKind interporation_kind)
+EXTERN_API void dlib_resize_image_matrix_rgbpixel_src_dest_interporation_kind(dlib::matrix<dlib::rgb_pixel> *src, dlib::matrix<dlib::rgb_pixel> *dest, int32_t interporation_kind)
 {
     try
     {

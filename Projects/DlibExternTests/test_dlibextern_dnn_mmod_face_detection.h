@@ -77,7 +77,7 @@ bool test_dlibextern_matrix_rgbpixel_resize_image()
         dlib_image_window_delete(window);
     }
 
-    if (false)
+    if (true)
     {
         auto window = dlib_image_window_new_title("input");
         auto window1 = dlib_image_window_new_title("NearestNeighbor");
