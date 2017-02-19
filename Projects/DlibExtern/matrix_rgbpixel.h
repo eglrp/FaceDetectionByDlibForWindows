@@ -12,6 +12,19 @@ EXTERN_API dlib::matrix<dlib::rgb_pixel> *dlib_matrix_rgbpixel_new()
     return new dlib::matrix<dlib::rgb_pixel>;
 }
 
+EXTERN_API dlib::matrix<dlib::rgb_pixel> *dlib_matrix_rgbpixel_new_width_height(size_t width, size_t height)
+{
+    return new dlib::matrix<dlib::rgb_pixel>(height, width);
+}
+
+EXTERN_API dlib::matrix<dlib::rgb_pixel> *dlib_matrix_rgbpixel_new_copied(dlib::matrix<dlib::rgb_pixel> *obj)
+{
+    auto ret = new dlib::matrix<dlib::rgb_pixel>(obj->nr(), obj->nc());
+    // TODO: use better method
+    dlib::resize_image(*obj, *ret, dlib::interpolate_nearest_neighbor());
+    return ret;
+}
+
 EXTERN_API void dlib_matrix_rgbpixel_delete(dlib::matrix<dlib::rgb_pixel> *obj)
 {
     delete obj;
@@ -57,6 +70,46 @@ EXTERN_API void dlib_pyramid_up_matrix_rgbpixel(dlib::matrix<dlib::rgb_pixel> *o
     try
     {
         dlib::pyramid_up(*obj);
+    }
+    catch (dlib::error &e)
+    {
+        if (g_ErrorCallback) g_ErrorCallback(e.what());
+    }
+}
+
+EXTERN_API void dlib_resize_image_matrix_rgbpixel_src_dest_interporation_kind(dlib::matrix<dlib::rgb_pixel> *src, dlib::matrix<dlib::rgb_pixel> *dest, ResizeImageInterporateKind interporation_kind)
+{
+    try
+    {
+        switch (interporation_kind)
+        {
+        case ResizeImageInterporateKind::NearestNeighbor:
+            dlib::resize_image(*src, *dest, dlib::interpolate_nearest_neighbor());
+            break;
+        case ResizeImageInterporateKind::Bilinear:
+            dlib::resize_image(*src, *dest, dlib::interpolate_bilinear());
+            break;
+        case ResizeImageInterporateKind::Quadratic:
+            dlib::resize_image(*src, *dest, dlib::interpolate_quadratic());
+            break;
+        default:
+            break;
+        }
+    }
+    catch (dlib::error &e)
+    {
+        if (g_ErrorCallback) g_ErrorCallback(e.what());
+    }
+}
+
+EXTERN_API void dlib_resize_image_matrix_rgbpixel_width_height(dlib::matrix<dlib::rgb_pixel> **src, size_t width, size_t height)
+{
+    try
+    {
+        auto dest = dlib_matrix_rgbpixel_new_width_height(width, height);
+        dlib_resize_image_matrix_rgbpixel_src_dest_interporation_kind(*src, dest, ResizeImageInterporateKind::Bilinear);
+        dlib_matrix_rgbpixel_delete(*src);
+        *src = dest;
     }
     catch (dlib::error &e)
     {

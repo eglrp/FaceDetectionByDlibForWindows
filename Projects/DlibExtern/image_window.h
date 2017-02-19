@@ -12,6 +12,14 @@ EXTERN_API dlib::image_window *dlib_image_window_new()
     return new dlib::image_window();
 }
 
+EXTERN_API dlib::image_window *dlib_image_window_new_title(const char *title)
+{
+    auto ret = new dlib::image_window();
+    std::string titleAsString(title);
+    ret->set_title(titleAsString);
+    return ret;
+}
+
 EXTERN_API void dlib_image_window_delete(dlib::image_window *obj)
 {
     delete obj;

@@ -33,6 +33,13 @@ EXTERN_API ErrorCallback inline dlib_set_error_redirect(const ErrorCallback call
 
 extern "C"
 {
+    enum ResizeImageInterporateKind
+    {
+        NearestNeighbor,
+        Bilinear,
+        Quadratic
+    };
+
     struct Rect
     {
         int32_t x, y, width, height;
