@@ -119,9 +119,11 @@
     <Compile Include="FaceDetectionContextBase.cs" />
     <Compile Include="FaceDetectionContextDlibHogSvm.cs" />
     <Compile Include="FaceDetectionContextModelsTest.cs" />
-    <Compile Include="FaceDetector.cs" />
+    <Compile Include="DlibSharpTests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestArray2dUchar.cs" />
+    <Compile Include="TestMatrixRgbPixel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\haarcascade_frontalface_alt.xml">

@@ -5,17 +5,28 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using NUnit.Framework;
 
+    [TestFixture]
     static class Program
     {
         static void Main()
         {
-            Test02();
+            Test04();
         }
 
+        [Test]
+        static void Test04()
+        {
+            var test = new DlibSharpTests();
+            test.TestArray2dUchar();
+            test.TestMatrixRgbPixel();
+        }
+
+        [Test]
         static void Test03()
         {
-            var test = new FaceDetector();
+            var test = new DlibSharpTests();
             test.TestFrontalFaceDetector();
             test.TestDnnMmodFaceDetection();
         }
@@ -29,9 +40,10 @@
             }
         }
 
+        [Test]
         static void Test01()
         {
-            var test = new FaceDetector();
+            var test = new DlibSharpTests();
             test.RawApiFrontalFaceDetectorUsingMemoryInput();
             for (int i = 0; i < 10; i++) { test.RawApiDnnMmodDetectionUsingMemoryInput(); }
         }
