@@ -44,7 +44,10 @@
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+#if DEBUG
+                Debugger.Break();
+#endif
+                Console.WriteLine(ex.Message);
             }
             finally
             {
