@@ -89,6 +89,9 @@
     internal static partial class NativeMethods
     {
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static int dlib_cuda_get_num_devices();
+
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
         extern internal static IntPtr dlib_dnn_mmod_face_detection_construct(string mmodHumanFaceDetectorDataFilePath);
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]

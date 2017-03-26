@@ -79,12 +79,12 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FaceLandmarkDetection.cs" />
     <Compile Include="ImageWindow.cs" />
     <Compile Include="MatrixRgbPixel.cs" />
     <Compile Include="Array2dUchar.cs" />
     <Compile Include="DnnMmodFaceDetection.cs" />
     <Compile Include="FrontalFaceDetector.cs" />
-    <Compile Include="NativeMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DlibExtern.cs" />
   </ItemGroup>

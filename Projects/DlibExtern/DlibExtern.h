@@ -35,9 +35,10 @@ extern "C"
 {
     enum ResizeImageInterporateKind
     {
-        NearestNeighbor,
-        Bilinear,
-        Quadratic
+        None = 0,
+        NearestNeighbor = 1,
+        Bilinear = 2,
+        Quadratic = 3,
     };
 
     struct Rect
@@ -56,6 +57,32 @@ extern "C"
             : x(r.left()), y(r.top()), width(r.width()), height(r.height())
         {}
 	};
+
+    struct Point
+    {
+        int32_t x, y;
+
+        Point()
+            : x(0), y(0)
+        {}
+
+        Point(int _x, int _y)
+            : x(_x), y(_y)
+        {}
+
+        Point(const dlib::point& p)
+            : x(p.x()), y(p.y())
+        {}
+    };
+
+    struct FaceLandmarks
+    {
+        Rect Rect;
+        Point Parts[68];
+
+        FaceLandmarks()
+        {}
+    };
 }
 
 #endif
