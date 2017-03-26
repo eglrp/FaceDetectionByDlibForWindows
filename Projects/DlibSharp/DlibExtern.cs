@@ -16,7 +16,7 @@
 
         public override string ToString()
         {
-            return string.Format("(X:{0} Y:{1} W:{2} H:{3})", X, Y, Width, Height);
+            return $"(X:{X} Y:{Y} W:{Width} H:{Height})";
         }
     }
 
@@ -27,6 +27,17 @@
         Bilinear = 2,
         Quadratic = 3
     }
+
+    public enum ResizeImageInterporateKind
+    {
+        None = 0,
+        NearestNeighbor = 1,
+        Bilinear = 2,
+        Quadratic = 3
+    }
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    internal delegate void ErrorCallback([MarshalAs(UnmanagedType.LPStr)] string what);
 
     [SuppressUnmanagedCodeSecurity]
     internal static partial class NativeMethods

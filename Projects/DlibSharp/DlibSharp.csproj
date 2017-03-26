@@ -82,12 +82,11 @@
     <Compile Include="ImageWindow.cs" />
     <Compile Include="MatrixRgbPixel.cs" />
     <Compile Include="Array2dUchar.cs" />
-    <Compile Include="ErrorCallback.cs" />
     <Compile Include="DnnMmodFaceDetection.cs" />
     <Compile Include="FrontalFaceDetector.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rect.cs" />
+    <Compile Include="DlibExtern.cs" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="dll\x64\cublas64_80.dll">
