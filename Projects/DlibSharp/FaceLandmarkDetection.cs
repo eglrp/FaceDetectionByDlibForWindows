@@ -27,19 +27,18 @@
             {
                 dets = NativeMethods.vector_FaceLandmark_new1();
                 NativeMethods.dlib_face_landmark_detection_operator(detector, array2dUchar.DlibArray2dUchar, faceDetectionThreshold, dets);
-                Trace.Assert(dets != null && dets != IntPtr.Zero);
-                long count = NativeMethods.vector_FaceLandmark_getSize(dets).ToInt64();
-                // If it does not return ret here, exception occurs.
-                if (count == 0) { return ret; }
-                var ptr = NativeMethods.vector_FaceLandmark_getPointer(dets);
-                if (true)
+                unsafe
                 {
+                    Trace.Assert(dets != null && dets != IntPtr.Zero);
+                    long count = NativeMethods.vector_FaceLandmark_getSize(dets).ToInt64();
+                    // If it does not return ret here, exception occurs.
+                    if (count == 0) { return ret; }
+                    FaceLandmarkInternal* faceLandmarkInternals = (FaceLandmarkInternal*)NativeMethods.vector_FaceLandmark_getPointer(dets).ToPointer();
                     ret = new FaceLandmark[count];
-                    Marshal.PtrToStructure(ptr, ret);
-                }
-                else
-                {
-                    ret = (FaceLandmark[])Marshal.PtrToStructure(ptr, typeof(FaceLandmark[]));
+                    for (int i = 0; i < count; i++)
+                    {
+                        ret[i] = new FaceLandmark(faceLandmarkInternals[i]);
+                    }
                 }
             }
             catch (Exception ex)
@@ -71,7 +70,7 @@
             ReleaseDetector();
             disposed = true;
         }
-        ~FaceLandmarkDetection() { Dispose(false); }
+        ~FrontalFaceDetector() { Dispose(false); }
         #endregion
     }
 
