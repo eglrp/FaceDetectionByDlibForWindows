@@ -95,6 +95,16 @@
                 }
             }
         }
+        public override string ToString()
+        {
+            var ret = $"Rect:{{{Rect}}}, Parts:{{";
+            foreach (var part in Parts)
+            {
+                ret += $"({part.X},{part.Y}),";
+            }
+            ret += "}}";
+            return ret;
+        }
     }
 
     [SuppressUnmanagedCodeSecurity]

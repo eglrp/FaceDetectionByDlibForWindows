@@ -16,6 +16,7 @@
 
         public FaceDetectionContextDlibDnnMmod FaceDetectionContextDlibDnnMmod { get; private set; }
         public FaceDetectionContextDlibHogSvm FaceDetectionContextDlibHogSvm { get; private set; }
+        public FaceDetectionContextDlibFaceLandmark FaceDetectionContextDlibFaceLandmark { get; private set; }
         public FaceDetectionContextCascadeClassifier FaceDetectionContextCascadeClassifier { get; private set; }
 
         Window resultWnd = null;
@@ -26,6 +27,7 @@
 
             FaceDetectionContextDlibDnnMmod = new FaceDetectionContextDlibDnnMmod();
             FaceDetectionContextDlibHogSvm = new FaceDetectionContextDlibHogSvm();
+            FaceDetectionContextDlibFaceLandmark = new FaceDetectionContextDlibFaceLandmark();
             FaceDetectionContextCascadeClassifier = new FaceDetectionContextCascadeClassifier("HaarCascade", new Scalar(127, 127, 127), "data/haarcascade_frontalface_alt.xml");
 
             resultWnd = new Window("Result. # of Devices: " + DnnMmodFaceDetection.GetDevicesCount());
@@ -66,6 +68,7 @@
 
                     FaceDetectionContextDlibDnnMmod.DetectFaces(SourceBgr);
                     FaceDetectionContextDlibHogSvm.DetectFaces(SourceBgr, 0);
+                    FaceDetectionContextDlibFaceLandmark.DetectFaceLandmarks(SourceBgr, 0);
                     using (var sourceGray = SourceBgr.CvtColor(ColorConversionCodes.BGR2GRAY))
                     {
                         FaceDetectionContextCascadeClassifier.DetectFaces(sourceGray, 1.08, 5, new Size(25, 25));
@@ -74,10 +77,13 @@
                     FaceDetectionContextCascadeClassifier.DrawResultAsRectangle(ResultBgr);
                     FaceDetectionContextDlibHogSvm.DrawResultAsRectangle(ResultBgr);
                     FaceDetectionContextDlibDnnMmod.DrawResultAsRectangle(ResultBgr);
+                    FaceDetectionContextDlibFaceLandmark.DrawResultAsRectangle(ResultBgr);
+                    FaceDetectionContextDlibFaceLandmark.DrawResultLandmarks(ResultBgr);
 
                     FaceDetectionContextDlibDnnMmod.DrawResultText(ResultBgr, new Point(20, 20));
                     FaceDetectionContextDlibHogSvm.DrawResultText(ResultBgr, new Point(20, 40));
-                    FaceDetectionContextCascadeClassifier.DrawResultText(ResultBgr, new Point(20, 60));
+                    FaceDetectionContextDlibFaceLandmark.DrawResultText(ResultBgr, new Point(20, 60));
+                    FaceDetectionContextCascadeClassifier.DrawResultText(ResultBgr, new Point(20, 80));
 
                     resultWnd.ShowImage(ResultBgr);
 
@@ -104,6 +110,7 @@
                 // dispose managed objects, and dispose objects that implement IDisposable
                 if (FaceDetectionContextDlibDnnMmod != null) { FaceDetectionContextDlibDnnMmod.Dispose(); FaceDetectionContextDlibDnnMmod = null; }
                 if (FaceDetectionContextDlibHogSvm != null) { FaceDetectionContextDlibHogSvm.Dispose(); FaceDetectionContextDlibHogSvm = null; }
+                if (FaceDetectionContextDlibFaceLandmark != null) { FaceDetectionContextDlibFaceLandmark.Dispose(); FaceDetectionContextDlibFaceLandmark = null; }
             }
             // release any unmanaged objects and set the object references to null
             disposed = true;

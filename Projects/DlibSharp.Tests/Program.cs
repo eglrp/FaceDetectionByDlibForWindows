@@ -15,22 +15,6 @@
             Test02();
         }
 
-        [Test]
-        static void Test04()
-        {
-            var test = new DlibSharpTests();
-            test.TestArray2dUchar();
-            test.TestMatrixRgbPixel();
-        }
-
-        [Test]
-        static void Test03()
-        {
-            var test = new DlibSharpTests();
-            test.TestFrontalFaceDetector();
-            test.TestDnnMmodFaceDetection();
-        }
-
         static void Test02()
         {
             using (var obj = new FaceDetectionContextModelsTest())
@@ -44,8 +28,18 @@
         static void Test01()
         {
             var test = new DlibSharpTests();
+
+            test.TestArray2dUchar();
             test.RawApiFrontalFaceDetectorUsingMemoryInput();
-            for (int i = 0; i < 10; i++) { test.RawApiDnnMmodDetectionUsingMemoryInput(); }
+            test.TestFrontalFaceDetector();
+
+            test.TestMatrixRgbPixel();
+            test.RawApiDnnMmodDetectionUsingMemoryInput();
+            test.TestDnnMmodFaceDetection();
+
+            test.TestArray2dRgbPixel();
+            test.RawApiFaceLandmarkDetectionUsingMemoryInput();
+            test.TestFaceLandmarkDetection();
         }
     }
 }

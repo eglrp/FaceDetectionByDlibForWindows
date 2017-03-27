@@ -79,6 +79,7 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Array2dRgbPixel.cs" />
     <Compile Include="FaceLandmarkDetection.cs" />
     <Compile Include="ImageWindow.cs" />
     <Compile Include="MatrixRgbPixel.cs" />

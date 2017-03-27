@@ -148,7 +148,7 @@ bool test_dlibextern_face_landmark_detection()
 
     auto dets = vector_FaceLandmarkInternal_new1();
     auto detector = dlib_get_face_landmark_detection("D:/Data/Dlib/shape_predictor_68_face_landmarks.dat");
-    dlib_face_landmark_detection_detect(detector, image, -0.5, dets);
+    dlib_face_landmark_detection_operator(detector, image, -0.5, dets);
     long count = vector_FaceLandmarkInternal_getSize(dets);
     if (count > 0)
     {

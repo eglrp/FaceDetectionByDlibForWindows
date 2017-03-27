@@ -73,7 +73,7 @@ EXTERN_API void dlib_face_landmark_detection_delete(dlib_extern_face_landmark_de
     delete obj;
 }
 
-EXTERN_API void dlib_face_landmark_detection_detect(
+EXTERN_API void dlib_face_landmark_detection_operator(
     dlib_extern_face_landmark_detection* obj,
     dlib::array2d<dlib::rgb_pixel>* image,
     double adjust_threshold,

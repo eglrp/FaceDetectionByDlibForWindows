@@ -26,6 +26,11 @@
             NativeMethods.dlib_image_window_set_image_array2d_uchar(DlibImageWindow, image.DlibArray2dUchar);
         }
 
+        public void SetImage(Array2dRgbPixel image)
+        {
+            NativeMethods.dlib_image_window_set_image_array2d_rgbpixel(DlibImageWindow, image.DlibArray2dRgbPixel);
+        }
+
         public void SetImage(MatrixRgbPixel image)
         {
             NativeMethods.dlib_image_window_set_image_matrix_rgbpixel(DlibImageWindow, image.DlibMatrixRgbPixel);
@@ -63,6 +68,9 @@
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
         extern internal static void dlib_image_window_set_image_array2d_uchar(IntPtr obj, IntPtr image);
+
+        [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
+        extern internal static void dlib_image_window_set_image_array2d_rgbpixel(IntPtr obj, IntPtr image);
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
         extern internal static void dlib_image_window_set_image_matrix_rgbpixel(IntPtr obj, IntPtr image);

@@ -15,18 +15,18 @@
         void ReleaseDetector() { if (detector != IntPtr.Zero) { NativeMethods.dlib_face_landmark_detection_delete(detector); detector = IntPtr.Zero; } }
         void ReleaseDets() { if (dets != IntPtr.Zero) { NativeMethods.vector_FaceLandmarkInternal_delete(dets); dets = IntPtr.Zero; } }
 
-        public FaceLandmarkDetection()
+        public FaceLandmarkDetection(string shapePredictorFilePath)
         {
-            detector = NativeMethods.dlib_get_face_landmark_detection();
+            detector = NativeMethods.dlib_get_face_landmark_detection(shapePredictorFilePath);
         }
 
-        public FaceLandmark[] DetectFaceLandmarks(Array2dUchar array2dUchar, double faceDetectionThreshold)
+        public FaceLandmark[] DetectFaceLandmarks(Array2dRgbPixel array2dRgbPixel, double faceDetectionThreshold)
         {
             var ret = new FaceLandmark[0];
             try
             {
                 dets = NativeMethods.vector_FaceLandmarkInternal_new1();
-                NativeMethods.dlib_face_landmark_detection_operator(detector, array2dUchar.DlibArray2dUchar, faceDetectionThreshold, dets);
+                NativeMethods.dlib_face_landmark_detection_operator(detector, array2dRgbPixel.DlibArray2dRgbPixel, faceDetectionThreshold, dets);
                 Trace.Assert(dets != null && dets != IntPtr.Zero);
                 long count = NativeMethods.vector_FaceLandmarkInternal_getSize(dets).ToInt64();
                 // If it does not return ret here, exception occurs.
@@ -78,7 +78,7 @@
     internal static partial class NativeMethods
     {
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
-        extern internal static IntPtr dlib_get_face_landmark_detection();
+        extern internal static IntPtr dlib_get_face_landmark_detection(string shapePredictorFilePath);
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
         extern internal static void dlib_face_landmark_detection_delete(IntPtr obj);

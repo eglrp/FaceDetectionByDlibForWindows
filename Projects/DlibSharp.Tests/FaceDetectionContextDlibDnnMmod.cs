@@ -22,7 +22,7 @@
                 IsEnabled = false;
                 return;
             }
-            DlibDnnMmod = new DlibSharp.DnnMmodFaceDetection("./Data/mmod_human_face_detector.dat");
+            DlibDnnMmod = new DlibSharp.DnnMmodFaceDetection("D:/Data/Dlib/mmod_human_face_detector.dat");
             Image = new DlibSharp.MatrixRgbPixel();
         }
 
