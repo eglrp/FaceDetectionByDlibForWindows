@@ -79,34 +79,13 @@
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct FaceLandmarkInternal
-    {
-        public Rect Rect;
-        public unsafe fixed int Parts[FaceLandmark.PartsLength * 2];
-    }
-
-    public class FaceLandmark
+    public struct FaceLandmark
     {
         public const int PartsLength = 68;
-        public System.Drawing.Rectangle Rect { get; set; }
-        public System.Drawing.Point[] Parts { get; set; }
-        public FaceLandmark()
-        {
-            Parts = new System.Drawing.Point[PartsLength];
-        }
-        internal FaceLandmark(FaceLandmarkInternal src)
-        {
-            Rect = new System.Drawing.Rectangle(src.Rect.X, src.Rect.Y, src.Rect.Width, src.Rect.Height);
-            Parts = new System.Drawing.Point[PartsLength];
-            unsafe
-            {
-                for (int i = 0; i < PartsLength; i++)
-                {
-                    Parts[i].X = src.Parts[i * 2];
-                    Parts[i].Y = src.Parts[i * 2 + 1];
-                }
-            }
-        }
+
+        public Rect Rect;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = PartsLength)]
+        public Point[] Parts;
     }
 
     [SuppressUnmanagedCodeSecurity]
