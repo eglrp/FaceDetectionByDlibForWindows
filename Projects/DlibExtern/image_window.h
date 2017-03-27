@@ -50,6 +50,18 @@ EXTERN_API void dlib_image_window_set_image_array2d_uchar(dlib::image_window *ob
     }
 }
 
+EXTERN_API void dlib_image_window_set_image_array2d_rgbpixel(dlib::image_window *obj, dlib::array2d<dlib::rgb_pixel> *image)
+{
+    try
+    {
+        obj->set_image<dlib::array2d<dlib::rgb_pixel>>(*image);
+    }
+    catch (dlib::error &e)
+    {
+        if (g_ErrorCallback) g_ErrorCallback(e.what());
+    }
+}
+
 EXTERN_API void dlib_image_window_set_image_matrix_rgbpixel(dlib::image_window *obj, dlib::matrix<dlib::rgb_pixel> *image)
 {
     try

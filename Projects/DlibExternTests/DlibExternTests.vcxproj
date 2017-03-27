@@ -183,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="test_dlibextern_dnn_mmod_face_detection.h" />
+    <ClInclude Include="test_dlibextern_face_landmark_detection.h" />
     <ClInclude Include="test_dlibextern_frontal_face_detector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

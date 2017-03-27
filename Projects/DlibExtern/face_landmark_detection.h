@@ -14,6 +14,7 @@ class dlib_extern_face_landmark_detection
 public:
     dlib::frontal_face_detector detector;
     dlib::shape_predictor sp;
+    const int PartsLength = 68;
 
 public:
     dlib_extern_face_landmark_detection(const char* shape_predictor_file_name)
@@ -31,19 +32,25 @@ public:
         try
         {
             std::vector<dlib::rectangle> dets = detector(*image, adjust_threshold);
+#if _DEBUG
+            std::cout << "Number of faces detected: " << dets.size() << std::endl;
+#endif
+
             dst->resize(dets.size());
             for (unsigned long dets_i = 0; dets_i < dets.size(); ++dets_i)
             {
-                dlib::full_object_detection shape = sp(image, dets[dets_i]);
+                dlib::full_object_detection shape = sp(*image, dets[dets_i]);
+#if _DEBUG
                 std::cout << "number of parts: " << shape.num_parts() << std::endl;
                 std::cout << "pixel position of first part:  " << shape.part(0) << std::endl;
                 std::cout << "pixel position of second part: " << shape.part(1) << std::endl;
+#endif
                 // You get the idea, you can get all the face part locations if
                 // you want them.  Here we just store them in shapes so we can
                 // put them on the screen.
                 (*dst)[dets_i].rect = shape.get_rect();
-                assert(shape.num_parts() == 68);
-                for (size_t parts_i = 0; parts_i < 68; parts_i++)
+                assert(shape.num_parts() == PartsLength);
+                for (size_t parts_i = 0; parts_i < PartsLength; parts_i++)
                 {
                     (*dst)[dets_i].parts[parts_i] = shape.part(parts_i);
                 }
