@@ -12,7 +12,7 @@
     {
         static void Main()
         {
-            Test04();
+            Test02();
         }
 
         [Test]

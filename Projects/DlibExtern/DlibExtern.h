@@ -49,14 +49,14 @@ extern "C"
             : x(0), y(0), width(0), height(0)
         {}
 
-        Rect(int _x, int _y, int _w, int _h) 
+        Rect(int _x, int _y, int _w, int _h)
             : x(_x), y(_y), width(_w), height(_h)
         {}
 
         Rect(const dlib::rectangle &r)
             : x(r.left()), y(r.top()), width(r.width()), height(r.height())
         {}
-	};
+    };
 
     struct Point
     {
@@ -75,13 +75,10 @@ extern "C"
         {}
     };
 
-    struct FaceLandmarks
+    struct FaceLandmarkInternal
     {
-        Rect Rect;
-        Point Parts[68];
-
-        FaceLandmarks()
-        {}
+        Rect rect;
+        Point parts[68];
     };
 }
 

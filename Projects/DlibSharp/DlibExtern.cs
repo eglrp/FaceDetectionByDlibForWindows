@@ -67,22 +67,10 @@
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct Point
-    {
-        public int X;
-        public int Y;
-
-        public override string ToString()
-        {
-            return $"(X:{X} Y:{Y})";
-        }
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
     internal struct FaceLandmarkInternal
     {
-        public Rect Rect;
-        public unsafe fixed int Parts[FaceLandmark.PartsLength * 2];
+        internal Rect Rect;
+        internal unsafe fixed int Parts[FaceLandmark.PartsLength * 2];
     }
 
     public class FaceLandmark
@@ -113,21 +101,21 @@
     internal static partial class NativeMethods
     {
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
-        extern internal static IntPtr vector_FaceLandmark_new1();
+        extern internal static IntPtr vector_FaceLandmarkInternal_new1();
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
-        extern internal static IntPtr vector_FaceLandmark_new2(IntPtr size);
+        extern internal static IntPtr vector_FaceLandmarkInternal_new2(IntPtr size);
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
-        extern internal static IntPtr vector_FaceLandmark_new3(IntPtr data, IntPtr dataLength);
+        extern internal static IntPtr vector_FaceLandmarkInternal_new3(IntPtr data, IntPtr dataLength);
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
-        extern internal static IntPtr vector_FaceLandmark_getSize(IntPtr vector);
+        extern internal static IntPtr vector_FaceLandmarkInternal_getSize(IntPtr vector);
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
-        extern internal static IntPtr vector_FaceLandmark_getPointer(IntPtr vector);
+        extern internal static IntPtr vector_FaceLandmarkInternal_getPointer(IntPtr vector);
 
         [DllImport(DlibExternDllPath, CallingConvention = CallingConvention.Cdecl)]
-        extern internal static void vector_FaceLandmark_delete(IntPtr vector);
+        extern internal static void vector_FaceLandmarkInternal_delete(IntPtr vector);
     }
 }

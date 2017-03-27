@@ -1,5 +1,5 @@
-#ifndef __DLIBEXTERN_ARRAY2D_H__
-#define __DLIBEXTERN_ARRAY2D_H__
+#ifndef __DLIBEXTERN_ARRAY2D_UCHAR_H__
+#define __DLIBEXTERN_ARRAY2D_UCHAR_H__
 
 #include "CommonSymbolsWithDlib.h"
 #include "DlibExtern.h"

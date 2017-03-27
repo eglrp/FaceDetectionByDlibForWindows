@@ -8,7 +8,7 @@
 #pragma comment(lib, "../../DlibBuiltFilesForWindows/" DLIB_LIB_DIR_NAME "/dlib_build/" DEBUG_OR_RELEASE "/dlib.lib")
 
 #include "../DlibExtern/DlibExtern.h"
-#include "../DlibExtern/array2d.h"
+#include "../DlibExtern/array2d_uchar.h"
 #include "../DlibExtern/std_vector.h"
 #include "../DlibExtern/frontal_face_detector.h"
 #include "../DlibExtern/image_window.h"

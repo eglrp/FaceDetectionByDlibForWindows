@@ -13,7 +13,7 @@
         IntPtr dets = IntPtr.Zero;
 
         void ReleaseDetector() { if (detector != IntPtr.Zero) { NativeMethods.dlib_face_landmark_detection_delete(detector); detector = IntPtr.Zero; } }
-        void ReleaseDets() { if (dets != IntPtr.Zero) { NativeMethods.vector_FaceLandmark_delete(dets); dets = IntPtr.Zero; } }
+        void ReleaseDets() { if (dets != IntPtr.Zero) { NativeMethods.vector_FaceLandmarkInternal_delete(dets); dets = IntPtr.Zero; } }
 
         public FaceLandmarkDetection()
         {
@@ -25,15 +25,15 @@
             var ret = new FaceLandmark[0];
             try
             {
-                dets = NativeMethods.vector_FaceLandmark_new1();
+                dets = NativeMethods.vector_FaceLandmarkInternal_new1();
                 NativeMethods.dlib_face_landmark_detection_operator(detector, array2dUchar.DlibArray2dUchar, faceDetectionThreshold, dets);
+                Trace.Assert(dets != null && dets != IntPtr.Zero);
+                long count = NativeMethods.vector_FaceLandmarkInternal_getSize(dets).ToInt64();
+                // If it does not return ret here, exception occurs.
+                if (count == 0) { return ret; }
                 unsafe
                 {
-                    Trace.Assert(dets != null && dets != IntPtr.Zero);
-                    long count = NativeMethods.vector_FaceLandmark_getSize(dets).ToInt64();
-                    // If it does not return ret here, exception occurs.
-                    if (count == 0) { return ret; }
-                    FaceLandmarkInternal* faceLandmarkInternals = (FaceLandmarkInternal*)NativeMethods.vector_FaceLandmark_getPointer(dets).ToPointer();
+                    FaceLandmarkInternal* faceLandmarkInternals = (FaceLandmarkInternal*)NativeMethods.vector_FaceLandmarkInternal_getPointer(dets).ToPointer();
                     ret = new FaceLandmark[count];
                     for (int i = 0; i < count; i++)
                     {
@@ -70,7 +70,7 @@
             ReleaseDetector();
             disposed = true;
         }
-        ~FrontalFaceDetector() { Dispose(false); }
+        ~FaceLandmarkDetection() { Dispose(false); }
         #endregion
     }
 
