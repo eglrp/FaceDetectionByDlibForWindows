@@ -256,3 +256,4 @@ DlibBuiltFilesForWindows/opencv_x64
 /Projects/DlibSharp/dll/x64/cublas64_80.dll
 /Projects/DlibSharp/dll/x64/cudnn64_5.dll
 /Projects/DlibSharp/dll/x64/curand64_80.dll
+/Projects/DlibSharp/dll/x64/cusolver64_80.dll

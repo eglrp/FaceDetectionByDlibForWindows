@@ -2,8 +2,7 @@
 #define __COMMONSYMBOLSWITHDLIB_H__
 
 
-#define DLIBEXTERN_USE_MKL_BLAS	0
-#define DLIBEXTERN_USE_CUDA		1
+#define DLIBEXTERN_USE_MKL_BLAS	1
 
 #define DLIB_JPEG_SUPPORT
 #define DLIB_JPEG_STATIC
@@ -23,21 +22,29 @@
 #define WIN32_OR_X64 "Win32"
 
 #if DLIBEXTERN_USE_MKL_BLAS
+// Not AVX+MKL but SSE4+MKL, because I hope it to work on Atom, too.
 #define DLIB_LIB_DIR_NAME "dlib_examples_build_x86_mkl"
 #define DLIB_USE_BLAS
 #define DLIB_USE_LAPACK
 #else
+// There may be cases that users cannot use (community edition) MKL.
 #define DLIB_LIB_DIR_NAME "dlib_examples_build_x86_avx"
 #endif
 
 #elif defined(PLATFORM_IS_x64)
 #define X86_OR_X64 "x64"
 #define WIN32_OR_X64 "x64"
-#if DLIBEXTERN_USE_CUDA
+
 #define DLIB_USE_CUDA
-#define DLIB_LIB_DIR_NAME "dlib_examples_build_x64_cuda"
+
+#if DLIBEXTERN_USE_MKL_BLAS
+// Not SSE4+MKL but AVX+MKL, CUDA users may use AVX(2).
+#define DLIB_LIB_DIR_NAME "dlib_examples_build_x64_mkl_cuda"
+#define DLIB_USE_BLAS
+#define DLIB_USE_LAPACK
 #else
-#error "Currently it needs CUDA."
+// There may be cases that users cannot use (community edition) MKL.
+#define DLIB_LIB_DIR_NAME "dlib_examples_build_x64_avx_cuda"
 #endif
 
 #else

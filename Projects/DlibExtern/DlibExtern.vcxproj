@@ -93,13 +93,13 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>PLATFORM_IS_$(Platform);WIN32;_DEBUG;_WINDOWS;_USRDLL;DLIBEXTERN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <PreprocessorDefinitions>PLATFORM_IS_$(Platform);_DEBUG;_WINDOWS;_USRDLL;DLIBEXTERN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>libcpmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <PostBuildEvent>
       <Command>mkdir "$(ProjectDir)..\DlibSharp\dll\$(PlatformTarget)"
@@ -116,11 +116,11 @@ copy "$(OutDir)DlibExtern.dll" "$(ProjectDir)..\DlibExternTests\bin\$(PlatformTa
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>PLATFORM_IS_$(Platform);_DEBUG;_WINDOWS;_USRDLL;DLIBEXTERN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>libcpmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <PostBuildEvent>
       <Command>mkdir "$(ProjectDir)..\DlibSharp\dll\$(PlatformTarget)"
@@ -136,15 +136,15 @@ copy "$(OutDir)DlibExtern.dll" "$(ProjectDir)..\DlibExternTests\bin\$(PlatformTa
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>PLATFORM_IS_$(Platform);WIN32;NDEBUG;_WINDOWS;_USRDLL;DLIBEXTERN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>PLATFORM_IS_$(Platform);NDEBUG;_WINDOWS;_USRDLL;DLIBEXTERN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>libcpmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <PostBuildEvent>
       <Command>mkdir "$(ProjectDir)..\DlibSharp\dll\$(PlatformTarget)"
@@ -163,13 +163,13 @@ copy "$(OutDir)DlibExtern.dll" "$(ProjectDir)..\DlibExternTests\bin\$(PlatformTa
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>PLATFORM_IS_$(Platform);NDEBUG;_WINDOWS;_USRDLL;DLIBEXTERN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>libcpmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <PostBuildEvent>
       <Command>mkdir "$(ProjectDir)..\DlibSharp\dll\$(PlatformTarget)"

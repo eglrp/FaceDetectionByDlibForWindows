@@ -23,13 +23,15 @@
 
 int main(void)
 {
-    //test_dlibextern_array2d_uchar_resize_image();
-    //test_dlibextern_frontal_face_detector();
+    // NOTE: About MKL, please refer to DlibExtern/LinkingLibrariesSettings.h and so on.
+    
+    test_dlibextern_array2d_uchar_resize_image();
+    test_dlibextern_frontal_face_detector();
 
-    //test_dlibextern_matrix_rgbpixel_resize_image();
-    //test_dlibextern_dnn_mmod_face_detection();
+    test_dlibextern_matrix_rgbpixel_resize_image();
+    test_dlibextern_dnn_mmod_face_detection();
 
-    //test_dlibextern_array2d_rgbpixel_resize_image();
+    test_dlibextern_array2d_rgbpixel_resize_image();
     test_dlibextern_face_landmark_detection();
 
     return 0;
