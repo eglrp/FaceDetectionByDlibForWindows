@@ -183,6 +183,7 @@ copy "$(OutDir)DlibExtern.dll" "$(ProjectDir)..\DlibExternTests\bin\$(PlatformTa
     <ClInclude Include="array2d_rgbpixel.h" />
     <ClInclude Include="array2d_uchar.h" />
     <ClInclude Include="DlibExtern.h" />
+    <ClInclude Include="dnn_semantic_segmentation.h" />
     <ClInclude Include="dnn_mmod_face_detection.h" />
     <ClInclude Include="face_landmark_detection.h" />
     <ClInclude Include="frontal_face_detector.h" />
@@ -196,6 +197,7 @@ copy "$(OutDir)DlibExtern.dll" "$(ProjectDir)..\DlibExternTests\bin\$(PlatformTa
     <ClCompile Include="array2d_rgbpixel.cpp" />
     <ClCompile Include="array2d_uchar.cpp" />
     <ClCompile Include="DlibExtern.cpp" />
+    <ClCompile Include="dnn_semantic_segmentation.cpp" />
     <ClCompile Include="dnn_mmod_face_detection.cpp" />
     <ClCompile Include="face_landmark_detection.cpp" />
     <ClCompile Include="frontal_face_detector.cpp" />
