@@ -12,9 +12,9 @@
     {
         static void Main()
         {
-            Test01();
+            //Test01();
 
-            // does not work now.
+            // Depends on camera, it does not work now.
             Test02();
         }
 

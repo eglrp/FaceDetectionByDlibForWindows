@@ -115,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FaceDetectionContextCascadeClassifier.cs" />
+    <Compile Include="FaceDetectionContextDlibDnnSemanticSegmentation.cs" />
     <Compile Include="FaceDetectionContextDlibDnnMmod.cs" />
     <Compile Include="FaceDetectionContextBase.cs" />
     <Compile Include="FaceDetectionContextDlibFaceLandmark.cs" />

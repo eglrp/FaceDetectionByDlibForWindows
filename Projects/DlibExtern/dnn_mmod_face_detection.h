@@ -33,7 +33,7 @@ public:
     ~dlib_extern_dnn_mmod_face_detection()
     {
         detector.clean();
-        std::cout << "dnn_mmod destructor called" << std::endl;
+        std::cout << "dlib_extern_dnn_mmod_face_detection destructor called" << std::endl;
     }
 
     void Detect(matrix<rgb_pixel> *image, std::vector<Rect> *dst)
