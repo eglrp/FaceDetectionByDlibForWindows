@@ -90,16 +90,16 @@
     <Compile Include="DlibExtern.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AdditionalFiles Include="dll\x64\cublas64_80.dll">
+    <AdditionalFiles Include="dll\x64\cublas64_91.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AdditionalFiles>
-    <AdditionalFiles Include="dll\x64\cudnn64_5.dll">
+    <AdditionalFiles Include="dll\x64\cudnn64_7.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AdditionalFiles>
-    <AdditionalFiles Include="dll\x64\curand64_80.dll">
+    <AdditionalFiles Include="dll\x64\curand64_91.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AdditionalFiles>
-    <AdditionalFiles Include="dll\x64\cusolver64_80.dll">
+    <AdditionalFiles Include="dll\x64\cusolver64_91.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AdditionalFiles>
     <Content Include="dll\x64\DlibExtern.dll">

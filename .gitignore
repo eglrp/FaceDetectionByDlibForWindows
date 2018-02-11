@@ -248,12 +248,8 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
-DlibBuiltFilesForWindows/dlib_examples_build_x64_cuda
-DlibBuiltFilesForWindows/dlib_examples_build_x86_avx
-DlibBuiltFilesForWindows/dlib_examples_build_x86_mkl
-DlibBuiltFilesForWindows/opencv_x86
-DlibBuiltFilesForWindows/opencv_x64
-/Projects/DlibSharp/dll/x64/cublas64_80.dll
-/Projects/DlibSharp/dll/x64/cudnn64_5.dll
-/Projects/DlibSharp/dll/x64/curand64_80.dll
-/Projects/DlibSharp/dll/x64/cusolver64_80.dll
+DlibBuiltFilesForWindows
+/Projects/DlibSharp/dll/x64/cublas64_91.dll
+/Projects/DlibSharp/dll/x64/cudnn64_7.dll
+/Projects/DlibSharp/dll/x64/curand64_91.dll
+/Projects/DlibSharp/dll/x64/cusolver64_91.dll

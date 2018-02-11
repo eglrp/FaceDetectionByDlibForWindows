@@ -12,6 +12,9 @@
     {
         static void Main()
         {
+            Test01();
+
+            // does not work now.
             Test02();
         }
 

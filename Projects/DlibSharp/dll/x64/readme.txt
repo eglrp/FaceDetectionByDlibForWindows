@@ -1,8 +1,8 @@
 Currently, in "dll/x64" folder,
-* cublas64_80.dll (39.8[MB])
-* cudnn64_5.dll   (81.2[MB])
-* curand64_80.dll (46.9[MB])
-* cusolver64_80.dll (46.9[MB])
+* cublas64_91.dll (39.8[MB])
+* cudnn64_7.dll   (81.2[MB])
+* curand64_91.dll (46.9[MB])
+* cusolver64_91.dll (46.9[MB])
 * libiomp5md.dll (1.3[MB])
 are necessary for easy re-distribution for internal tests, experiments and so on.
 But we do not re-distribute these files.
@@ -12,20 +12,19 @@ you can delete these links to these files in DlibSharp.csproj.
 
 
 To copy 
-* cublas64_80.dll
-* curand64_80.dll
-* cusolver64_80.dll
-please install CUDA Toolkit 8.0.
+* cublas64_91.dll
+* curand64_91.dll
+* cusolver64_91.dll
+please install CUDA Toolkit 9.1.
 
 
 To copy
-* cudnn64_5.dll
+* cudnn64_7.dll
 please download
-cudnn-8.0-windows7-x64-v5.1.zip
+cudnn-9.1-windows10-x64-v7.zip
 from NVIDIA web site.
 https://developer.nvidia.com/cudnn
 There is not 32-bit or static link version of cuDNN.
-This windows 7 version can work on Windows 10, I think.
 
 
 To copy

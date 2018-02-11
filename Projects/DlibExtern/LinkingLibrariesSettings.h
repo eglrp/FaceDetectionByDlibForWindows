@@ -46,7 +46,7 @@
 #pragma comment(lib, INTEL_MKL_LIBS_PATH "compiler\\lib\\intel64\\libiomp5md.lib")
 #endif
 
-#define CUDA_X64_LIB_PATH "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/"
+#define CUDA_X64_LIB_PATH "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v9.1/lib/x64/"
 #pragma comment(lib, CUDA_X64_LIB_PATH "cuda.lib")
 #pragma comment(lib, CUDA_X64_LIB_PATH "cublas.lib")
 #pragma comment(lib, CUDA_X64_LIB_PATH "cudart_static.lib")

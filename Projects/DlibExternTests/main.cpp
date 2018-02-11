@@ -2,7 +2,7 @@
 
 #include "../DlibExtern/CommonSymbolsWithDlib.h"
 #include "../DlibExtern/LinkingLibrariesSettings.h"
-#pragma comment(lib, "../../DlibBuiltFilesForWindows/" DLIB_LIB_DIR_NAME "/dlib_build/" DEBUG_OR_RELEASE "/dlib.lib")
+#pragma comment(lib, "../../DlibBuiltFilesForWindows/" DLIB_LIB_DIR_NAME "/dlib_build/" DEBUG_OR_RELEASE "/" DLIB_LIB_FILE_NAME)
 
 #include "../DlibExtern/DlibExtern.h"
 

@@ -21,6 +21,12 @@
 #define X86_OR_X64 "x86"
 #define WIN32_OR_X64 "Win32"
 
+#ifdef _DEBUG
+#define DLIB_LIB_FILE_NAME "dlib_debug_32bit_msvc1900.lib"
+#else
+#define DLIB_LIB_FILE_NAME "dlib_release_32bit_msvc1900.lib"
+#endif
+
 #if DLIBEXTERN_USE_MKL_BLAS
 // Not AVX+MKL but SSE4+MKL, because I hope it to work on Atom, too.
 #define DLIB_LIB_DIR_NAME "dlib_examples_build_x86_mkl"
@@ -28,12 +34,19 @@
 #define DLIB_USE_LAPACK
 #else
 // There may be cases that users cannot use (community edition) MKL.
-#define DLIB_LIB_DIR_NAME "dlib_examples_build_x86_avx"
+#error "There is no library now.  Atom processors cannot use AVX, but can use MKL.  Try MKL version on 64-bit OS."
+//#define DLIB_LIB_DIR_NAME "dlib_examples_build_x86_sse4"
 #endif
 
 #elif defined(PLATFORM_IS_x64)
 #define X86_OR_X64 "x64"
 #define WIN32_OR_X64 "x64"
+
+#ifdef _DEBUG
+#define DLIB_LIB_FILE_NAME "dlib_debug_64bit_msvc1900.lib"
+#else
+#define DLIB_LIB_FILE_NAME "dlib_release_64bit_msvc1900.lib"
+#endif
 
 #define DLIB_USE_CUDA
 
